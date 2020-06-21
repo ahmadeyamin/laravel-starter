@@ -18,15 +18,20 @@ A repo to help robust dev experience. All laravel application has some basic fun
 13. Vue implemented.
 14. New Error Page Design
 15. User Activity Logging System.
-# 16. PHP OPcache Extension for ultra fast speed upto 10X. 
+16. PHP OPcache Extension for ultra fast speed upto 10X.
 
-# Without OPcache Laravel Default with some basic packages
-## Avg (450ms - 550ms) laravel default home page 
 
-# OPcache Enabled Laravel Default with some basic packages
-## Avg (50ms - 90ms) laravel default home page 
+Without OPcache Laravel Default with some basic packages
+# Avg (450ms - 550ms) laravel default home page 
 
-# OPcache visual chart at /op route
+
+OPcache Enabled Laravel Default with some basic packages
+# Avg (50ms - 90ms) laravel default home page 
+
+
+OPcache visual chart at /op route
+
+
 
 
 ## I will update this soon if anyone wants to contribute so please let me know  ahmadeyamin@gmail.com
