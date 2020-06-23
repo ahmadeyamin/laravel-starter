@@ -19,6 +19,8 @@ A repo to help robust dev experience. All laravel application has some basic fun
 14. New Error Page Design
 15. User Activity Logging System.
 16. PHP OPcache Extension for ultra fast speed upto 10X.
+17. Laravel Livewire for some form submission.
+18. Alpine js for mini ui and Turbolinks js implemented for SPA like routeing
 
 
 Without OPcache Laravel Default with some basic packages
