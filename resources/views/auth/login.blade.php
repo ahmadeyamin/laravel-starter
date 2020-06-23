@@ -8,6 +8,7 @@
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
         <link rel="icon" href="../favicon.ico" type="image/x-icon" />
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
@@ -18,6 +19,11 @@
         <link rel="stylesheet" href="{{ asset('plugins/icon-kit/dist/css/iconkit.min.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/theme.min.css') }}">
         <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+
+        <script>
+            Turbolinks.start();
+        </script>
+
     </head>
 
     <body>
@@ -38,7 +44,7 @@
                             <p>Happy to see you again!</p>
                             <form action="{{ route('login') }}" method="POST">
                                 <div class="form-group">
-                                    <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" required="" />
+                                    <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" required="" value="{{old('email')}}" />
                                     <i class="ik ik-user"></i>
 
                                     @error('email')
@@ -49,9 +55,20 @@
 
                                 </div>
                                 @csrf
-                                <div class="form-group">
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required="" name="password" />
+                                <div class="form-group" x-data="{show:false}">
+
+
+                                <input  x-bind:type="!show?'password':'text'" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required="" name="password" />
+
+
+                                      <div class="input-group-append position-absolute" style="right: 10px;top:9px;">
+
+                                        <a href="#" @click.prevent="show = !show" x-show="show"><i class="ik ik-eye" aria-hidden="true"></i></a>
+                                        <a href="#" @click.prevent="show = !show" x-show="!show"><i class="ik ik-eye-off" aria-hidden="true"></i></a>
+                                      </div>
                                     <i class="ik ik-lock"></i>
+
+
 
                                     @error('password')
                                     <div class="invalid-feedback">
@@ -67,13 +84,25 @@
                                         </label>
                                     </div>
                                     <div class="col text-right">
-                                    <a href="#">{{__('Forgot Password ?')}}</a>
+                                    <a href="{{ route('password.request') }}">{{__('Forgot Password ?')}}</a>
                                     </div>
                                 </div>
                                 <div class="sign-btn text-center">
                                 <button class="btn btn-theme">{{__('Sign In')}}</button>
                                 </div>
                             </form>
+
+                            <div class="d-flex justify-content-around mt-4">
+                                <a href="#" class="btn social-btn btn-facebook" >
+                                    <i class="ik-facebook ik"></i>
+                                </a>
+                                <a href="#" class="btn social-btn btn-twitter">
+                                    <i class="ik-twitter ik"></i>
+                                </a>
+                                <a href="" class="btn social-btn btn-dark">
+                                    <i class="ik-github ik"></i>
+                                </a>
+                            </div>
 
                             @if (Route::has('register'))
                             <div class="register">
@@ -90,6 +119,6 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="{{ asset('plugins/popper.js/dist/umd/popper.min.js') }}"></script>
         <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
     </body>
 </html>
