@@ -27,8 +27,8 @@
             <div class="container-fluid h-100">
                 <div class="row flex-row h-100 bg-white">
                     <div class="col-xl-8 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
-                    <div class="lavalite-bg" style="background-image: url('{{asset('img/auth/login-bg.jpg')}}')">
-                            <div class="lavalite-overlay"></div>
+                        <div class="lavalite-bg" style="background-image: url('{{asset('img/singup.svg')}}');background-position: center;
+                        background-size: 70% 75%;">
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
@@ -41,7 +41,7 @@
                             <form action="{{ route('register') }}" method="POST">
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" required="">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Name" required="">
                                     <i class="ik ik-user"></i>
 
                                     @error('name')
@@ -53,7 +53,7 @@
 
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" required="">
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required="">
                                     <i class="ik ik-mail"></i>
 
                                     @error('email')
@@ -62,9 +62,20 @@
                                     </div>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control @error('password') is-invalid  @enderror" name="password" placeholder="Password" required="">
+                                <div class="form-group" x-data="{show:false}">
+
+
+                                    <input  x-bind:type="!show?'password':'text'" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required="" name="password" />
+
+
+                                    <div class="input-group-append position-absolute" style="right: 10px;top:9px;">
+
+                                        <a href="#" @click.prevent="show = !show" x-show="show"><i class="ik ik-eye" aria-hidden="true"></i></a>
+                                        <a href="#" @click.prevent="show = !show" x-show="!show"><i class="ik ik-eye-off" aria-hidden="true"></i></a>
+                                    </div>
                                     <i class="ik ik-lock"></i>
+
+
 
                                     @error('password')
                                     <div class="invalid-feedback">
@@ -72,10 +83,25 @@
                                     </div>
                                     @enderror
                                 </div>
+
+
                                 @csrf
-                                <div class="form-group">
-                                    <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror"  placeholder="Confirm Password" required="">
-                                    <i class="ik ik-eye-off"></i>
+
+
+                                <div class="form-group" x-data="{show:false}">
+
+
+                                    <input  x-bind:type="!show?'password':'text'" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Confirm Password"  required="" name="password_confirmation" />
+
+
+                                    <div class="input-group-append position-absolute" style="right: 10px;top:9px;">
+
+                                        <a href="#" @click.prevent="show = !show" x-show="show"><i class="ik ik-eye" aria-hidden="true"></i></a>
+                                        <a href="#" @click.prevent="show = !show" x-show="!show"><i class="ik ik-eye-off" aria-hidden="true"></i></a>
+                                    </div>
+                                    <i class="ik ik-lock"></i>
+
+
 
                                     @error('password_confirmation')
                                     <div class="invalid-feedback">
@@ -83,11 +109,12 @@
                                     </div>
                                     @enderror
                                 </div>
+
                                 <div class="row">
                                     <div class="col-12 text-left">
                                         <label class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" required value="1">
-                                            <span class="custom-control-label">&nbsp;I Accept <a href="#">Terms and Conditions</a></span>
+                                            <span class="custom-control-label">&nbsp;I Accept Terms and Conditions</span>
                                         </label>
                                     </div>
                                 </div>
@@ -107,6 +134,8 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="{{ asset('plugins/popper.js/dist/umd/popper.min.js') }}"></script>
         <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
 
     </body>
 </html>
