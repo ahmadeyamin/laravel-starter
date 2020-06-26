@@ -20,7 +20,8 @@
         "laravel/ui": "^2.0",
         "livewire/livewire": "^1.2",
         "spatie/laravel-backup": "^6.11",
-        "spatie/laravel-medialibrary": "8.0.0"
+        "spatie/laravel-medialibrary": "8.0.0",
+        "yajra/laravel-datatables-oracle": "^9.10"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

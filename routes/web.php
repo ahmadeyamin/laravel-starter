@@ -13,13 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('index');
 
 Auth::routes();
 // Socialite routes
 Route::group(['as'=>'login.','prefix'=>'login','namespace'=>'Auth'], function () {
-    Route::get('/{provider}', 'LoginController@redirectToProvider')->name('provider');
-    Route::get('/{provider}/callback', 'LoginController@handleProviderCallback')->name('callback');
+    Route::get('{provider}', 'LoginController@redirectToProvider')->name('provider');
+    Route::get('{provider}/callback', 'LoginController@handleProviderCallback')->name('callback');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth'],'prefix' => 'app','namespace'=>'Backend','as'=>'backend.'], function () {
+    Route::get('home', 'Admin\HomeController@index')->name('home');
+    Route::resource('users', 'Admin\UserController');
+});
+

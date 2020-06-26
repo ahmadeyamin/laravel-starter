@@ -1,8 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -56,5 +57,10 @@ class User extends Authenticatable implements HasMedia
                     ->width(160)
                     ->height(160);
             });
+    }
+
+    public function getAvatarAttribute( $var )
+    {
+        return $this->getFirstMediaUrl('avatar', 'thumb');
     }
 }

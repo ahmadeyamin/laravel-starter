@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Route;
 use Request;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -34,8 +34,9 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+
     /**
-     * Create a new controller instance.
+     * __construct
      *
      * @return void
      */
@@ -45,11 +46,11 @@ class LoginController extends Controller
     }
 
     /**
-     * The user has been authenticated.
+     * authenticated after auth
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
-     * @return mixed
+     * @param  mixed $request
+     * @param  mixed $user
+     * @return void
      */
     protected function authenticated(Request $request, $user)
     {
@@ -65,6 +66,12 @@ class LoginController extends Controller
 
 
 
+    /**
+     * redirectToProvider
+     *
+     * @param  mixed $provider
+     * @return void
+     */
     public function redirectToProvider($provider)
     {
         return Socialite::driver($provider)->redirect();
@@ -72,10 +79,10 @@ class LoginController extends Controller
 
 
     /**
-     * Obtain the user information from provider.
+     * handleProviderCallback
      *
-     * @param $provider
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  mixed $provider
+     * @return void
      */
     public function handleProviderCallback($provider)
     {
