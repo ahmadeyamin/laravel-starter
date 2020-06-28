@@ -12,7 +12,7 @@
 
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script> --}}
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
         <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css') }}">
@@ -23,8 +23,11 @@
 
 
         <script>
-            Turbolinks.start();
+            // Turbolinks.start();
         </script>
+
+
+        @stack('css')
 
     </head>
 
@@ -146,36 +149,13 @@
                 <div class="main-content">
                     <div class="container-fluid">
                         <div class="page-header">
-                            <div class="row align-items-end">
-                                <div class="col-lg-8">
-                                    <div class="page-header-title">
-                                        <i class="ik ik-home bg-blue"></i>
-                                        <div class="d-inline">
-                                            <h5>@yield('h2','Dashboard')</h5>
-                                            <span>@yield('span','Website Admin Dashboard')</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <nav class="breadcrumb-container" aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item active">
-                                                <a href="/"><i class="ik ik-home"></i></a>
-                                            </li>
-
-                                        </ol>
-                                    </nav>
-                                </div>
-                            </div>
+                            @yield('header')
                         </div>
 
                         <div class="card">
-                            <div class="card-header justify-content-between"><h3>Dashboard</h3> <a class="btn btn-theme pull-right" target="_blank" href="/">Setting</a></div>
-                            <div class="card-body">
 
-                                @yield('content')
+                            @yield('content')
 
-                            </div>
                         </div>
 
                     </div>
@@ -221,13 +201,16 @@
 
 
 
-        <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}" defer ></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"  defer ></script>
-        <script src="{{ asset('plugins/popper.js/dist/umd/popper.min.js') }}" defer data-turbolinks-eval='false'></script>
-        <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}" defer ></script>
-        <script src="{{ asset('plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}" defer ></script>
-        <script src="{{ asset('plugins/screenfull/dist/screenfull.js') }}" defer ></script>
-        <script src="{{ asset('dist/js/theme.js') }}" data-turbolinks-eval='true' defer > </script>
+        <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}" ></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"  ></script>
+        <script src="{{ asset('plugins/popper.js/dist/umd/popper.min.js') }}" data-turbolinks-eval='false'></script>
+        <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}" ></script>
+        <script src="{{ asset('plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}" ></script>
+        <script src="{{ asset('plugins/screenfull/dist/screenfull.js') }}" ></script>
+        <script src="{{ asset('dist/js/theme.js') }}" data-turbolinks-eval='true' > </script>
+
+
+        @stack('js')
 
     </body>
 </html>
