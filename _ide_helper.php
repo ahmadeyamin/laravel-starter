@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.16.1 on 2020-06-21 17:39:32.
+ * Generated for Laravel 7.16.1 on 2020-07-01 19:13:14.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1847,7 +1847,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the currently authenticated user.
          *
-         * @return \App\User|null 
+         * @return \App\Models\User|null 
          * @static 
          */ 
         public static function user()
@@ -1885,7 +1885,7 @@ namespace Illuminate\Support\Facades {
          * Log the given user ID into the application without sessions or cookies.
          *
          * @param mixed $id
-         * @return \App\User|false 
+         * @return \App\Models\User|false 
          * @static 
          */ 
         public static function onceUsingId($id)
@@ -1954,7 +1954,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \App\User|false 
+         * @return \App\Models\User|false 
          * @static 
          */ 
         public static function loginUsingId($id, $remember = false)
@@ -2033,7 +2033,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\User 
+         * @return \App\Models\User 
          * @static 
          */ 
         public static function getLastAttempted()
@@ -2144,7 +2144,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Return the currently cached user.
          *
-         * @return \App\User|null 
+         * @return \App\Models\User|null 
          * @static 
          */ 
         public static function getUser()
@@ -2194,7 +2194,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if current user is authenticated. If not, throw an exception.
          *
-         * @return \App\User 
+         * @return \App\Models\User 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */ 
@@ -12158,6 +12158,36 @@ namespace Illuminate\Support\Facades {
         {
                         return \Illuminate\Routing\Router::emailVerification();
         }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function layout($layout)
+        {
+                        return \Illuminate\Routing\Router::layout($layout);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function section($section)
+        {
+                        return \Illuminate\Routing\Router::section($section);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function livewire($uri, $component = null)
+        {
+                        return \Illuminate\Routing\Router::livewire($uri, $component);
+        }
          
     }
 
@@ -16380,6 +16410,511 @@ namespace Laravel\Socialite\Facades {
  
 }
 
+namespace Livewire { 
+
+    /**
+     * 
+     *
+     * @see \Livewire\LivewireManager
+     */ 
+    class Livewire {
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function component($alias, $viewClass)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->component($alias, $viewClass);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function componentResolver($callback)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->componentResolver($callback);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getComponentClass($alias)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->getComponentClass($alias);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function activate($component, $id)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->activate($component, $id);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function mount($name, $params = [])
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->mount($name, $params);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function dummyMount($id, $tagName)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->dummyMount($id, $tagName);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function test($name, $params = [])
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->test($name, $params);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function actingAs($user, $driver = null)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->actingAs($user, $driver);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function styles($options = [])
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->styles($options);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function scripts($options = [])
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->scripts($options);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isLivewireRequest()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->isLivewireRequest();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getRootElementTagName($dom)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->getRootElementTagName($dom);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function dispatch($event, ...$params)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->dispatch($event, ...$params);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function listen($event, $callback)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->listen($event, $callback);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isOnVapor()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->isOnVapor();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isLaravel7()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->isLaravel7();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function resolveMethodDependencies($parameters, $reflector)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->resolveMethodDependencies($parameters, $reflector);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function registerHydrationMiddleware($classes)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->registerHydrationMiddleware($classes);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function registerInitialHydrationMiddleware($callables)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->registerInitialHydrationMiddleware($callables);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function registerInitialDehydrationMiddleware($callables)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->registerInitialDehydrationMiddleware($callables);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function hydrate($instance, $request)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->hydrate($instance, $request);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function initialHydrate($instance, $request)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->initialHydrate($instance, $request);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function initialDehydrate($instance, $response)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->initialDehydrate($instance, $response);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function dehydrate($instance, $response)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->dehydrate($instance, $response);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function hydrateProperty($callback)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->hydrateProperty($callback);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function dehydrateProperty($callback)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->dehydrateProperty($callback);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function performHydrateProperty($value, $property, $instance)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->performHydrateProperty($value, $property, $instance);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function performDehydrateProperty($value, $property, $instance)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->performDehydrateProperty($value, $property, $instance);
+        }
+         
+    }
+ 
+}
+
+namespace Yajra\DataTables\Facades { 
+
+    /**
+     * 
+     *
+     * @mixin \Yajra\DataTables\DataTables
+     * @see \Yajra\DataTables\DataTables
+     */ 
+    class DataTables {
+        
+        /**
+         * Make a DataTable instance from source.
+         * 
+         * Alias of make for backward compatibility.
+         *
+         * @param mixed $source
+         * @return mixed 
+         * @throws \Exception
+         * @static 
+         */ 
+        public static function of($source)
+        {
+                        return \Yajra\DataTables\DataTables::of($source);
+        }
+        
+        /**
+         * Make a DataTable instance from source.
+         *
+         * @param mixed $source
+         * @return mixed 
+         * @throws \Exception
+         * @static 
+         */ 
+        public static function make($source)
+        {
+                        return \Yajra\DataTables\DataTables::make($source);
+        }
+        
+        /**
+         * Get request object.
+         *
+         * @return \Yajra\DataTables\Utilities\Request 
+         * @static 
+         */ 
+        public static function getRequest()
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->getRequest();
+        }
+        
+        /**
+         * Get config instance.
+         *
+         * @return \Yajra\DataTables\Utilities\Config 
+         * @static 
+         */ 
+        public static function getConfig()
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->getConfig();
+        }
+        
+        /**
+         * 
+         *
+         * @deprecated Please use query() instead, this method will be removed in a next version.
+         * @param $builder
+         * @return \Yajra\DataTables\QueryDataTable 
+         * @static 
+         */ 
+        public static function queryBuilder($builder)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->queryBuilder($builder);
+        }
+        
+        /**
+         * DataTables using Query.
+         *
+         * @param \Illuminate\Database\Query\Builder|mixed $builder
+         * @return \Yajra\DataTables\DataTableAbstract|\Yajra\DataTables\QueryDataTable 
+         * @static 
+         */ 
+        public static function query($builder)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->query($builder);
+        }
+        
+        /**
+         * DataTables using Eloquent Builder.
+         *
+         * @param \Illuminate\Database\Eloquent\Builder|mixed $builder
+         * @return \Yajra\DataTables\DataTableAbstract|\Yajra\DataTables\EloquentDataTable 
+         * @static 
+         */ 
+        public static function eloquent($builder)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->eloquent($builder);
+        }
+        
+        /**
+         * DataTables using Collection.
+         *
+         * @param \Illuminate\Support\Collection|array $collection
+         * @return \Yajra\DataTables\DataTableAbstract|\Yajra\DataTables\CollectionDataTable 
+         * @static 
+         */ 
+        public static function collection($collection)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->collection($collection);
+        }
+        
+        /**
+         * DataTables using Collection.
+         *
+         * @param \Illuminate\Http\Resources\Json\AnonymousResourceCollection|array $collection
+         * @return \Yajra\DataTables\DataTableAbstract|\Yajra\DataTables\ApiResourceDataTable 
+         * @static 
+         */ 
+        public static function resource($resource)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->resource($resource);
+        }
+        
+        /**
+         * Get html builder instance.
+         *
+         * @return \Yajra\DataTables\Html\Builder 
+         * @throws \Exception
+         * @static 
+         */ 
+        public static function getHtmlBuilder()
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->getHtmlBuilder();
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+                        \Yajra\DataTables\DataTables::macro($name, $macro);
+        }
+        
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin, $replace = true)
+        {
+                        \Yajra\DataTables\DataTables::mixin($mixin, $replace);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+                        return \Yajra\DataTables\DataTables::hasMacro($name);
+        }
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -19336,6 +19871,10 @@ namespace  {
     class Image extends \Intervention\Image\Facades\Image {}
 
     class Socialite extends \Laravel\Socialite\Facades\Socialite {}
+
+    class Livewire extends \Livewire\Livewire {}
+
+    class DataTables extends \Yajra\DataTables\Facades\DataTables {}
  
 }
 

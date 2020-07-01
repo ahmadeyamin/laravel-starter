@@ -1,10 +1,10 @@
 <div class="nav-container">
     <nav id="main-menu-navigation" class="navigation-main">
         <div class="nav-lavel">Navigation</div>
-        <div class="nav-item">
+        <div class="nav-item @if(request()->routeIs('backend.home'))  active @endif">
             <a href="{{ route('backend.home') }}"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
         </div>
-        <div class="nav-item">
+        <div class="nav-item @if(request()->routeIs('backend.users*'))  active @endif">
             <a href="{{ route('backend.users.index') }}"><i class="ik ik-user"></i><span>Users</span></a>
         </div>
         <div class="nav-item has-sub">
@@ -42,7 +42,7 @@
                 <a href="session-timeout.html" class="menu-item">Session Timeout</a>
             </div>
         </div>
-        <div class="nav-item active">
+        <div class="nav-item">
             <a href="icons.html"><i class="ik ik-command"></i><span>Icons</span></a>
         </div>
         <div class="nav-lavel">Forms</div>

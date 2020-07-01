@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="{{ asset('plugins/ionicons/dist/css/ionicons.min.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/icon-kit/dist/css/iconkit.min.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}">
-        <link rel="stylesheet" href="{{ asset('dist/css/theme.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('dist/css/theme.css') }}">
 
 
         <script>

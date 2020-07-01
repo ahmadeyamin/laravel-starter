@@ -6,10 +6,10 @@
 <div class="row align-items-end">
     <div class="col-lg-8">
         <div class="page-header-title">
-            <i class="ik ik-home bg-blue"></i>
+            <i class="ik ik-user bg-blue"></i>
             <div class="d-inline">
-                <h5>@yield('h2','Dashboard')</h5>
-                <span>@yield('span','Website Admin Dashboard')</span>
+                <h5>@yield('h2','Users List')</h5>
+                <span>@yield('span','Website Admin And User List')</span>
             </div>
         </div>
     </div>
@@ -43,10 +43,46 @@ $(document).ready(function() {
     var table = $('#data_table').DataTable({
         responsive: true,
         select: true,
-        'aoColumnDefs': [{
-            'bSortable': false,
-            'aTargets': ['nosort']
-        }]
+        processing: true,
+            serverSide: true,
+            ajax: "{{ route('datatable.users') }}",
+            "aLengthMenu": [
+                [10, 20, 50, -1],
+                [10, 20, 50, "All"]
+            ],
+            "iDisplayLength": 15,
+            "autoWidth" : false,
+            order:  [0, 'desc'] ,
+            columns: [
+                {
+                    data: 'id',
+                    name: 'id'
+                },
+                {
+                    data: 'avatar',
+                    name: 'avatar'
+                },
+                {
+                    data: 'name',
+                    name: 'name',
+                    orderable: false
+                },
+                {
+                    data: 'email',
+                    name: 'email',
+                    className: 'font-weight-bold',
+                    // width: '50%'
+                },
+                {
+                    data: 'created_at',
+                    name: 'created_at',
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    sort: false,
+                }
+            ],
     });
 
 })
@@ -54,7 +90,7 @@ $(document).ready(function() {
 @endpush
 
 @section('content')
-<div class="card-header justify-content-between"><h3>Dashboard</h3> <a class="btn btn-theme pull-right" target="_blank" href="/">Setting</a></div>
+<div class="card-header justify-content-between"><h3>Users</h3> <a class="btn btn-theme pull-right" href="/">Add User <i class="ik ik-user-plus"></i></a> </div>
 <div class="card-body">
 
     <div>
@@ -65,39 +101,12 @@ $(document).ready(function() {
                     <th>Avatar</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Role</th>
+                    <th>Last Active</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td scope="row">1</td>
-                        <td><img src="{{ asset('img/users/5.jpg') }}" class="img-thumbnail table-user-thumb rounded-circle" alt=""></td>
-                        <td>EYamin </td>
-                        <td>duh@wud.eof</td>
-                        <td>Admin</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary">Apple</button>
-                                <button type="button" class="btn btn-primary">Samsung</button>
-                                <button type="button" class="btn btn-primary">Sony</button>
-                              </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">1</td>
-                        <td><img src="{{ asset('img.1.jpg') }}" class="img-thumbnail rounded-circle" alt=""></td>
-                        <td>EYamin </td>
-                        <td>duh@wud.eof</td>
-                        <td>Admin</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary">Apple</button>
-                                <button type="button" class="btn btn-primary">Samsung</button>
-                                <button type="button" class="btn btn-primary">Sony</button>
-                              </div>
-                        </td>
-                    </tr>
+
                 </tbody>
         </table>
     </div>

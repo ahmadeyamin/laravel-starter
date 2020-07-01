@@ -30,7 +30,7 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','provider','provider_token'
+        'password', 'remember_token','provider','provider_token','media'
     ];
 
     /**
@@ -45,6 +45,13 @@ class User extends Authenticatable implements HasMedia
         'is_blocked' => 'boolean',
     ];
 
+    protected $appends = ['avatar'];
+
+    /**
+     * registerMediaCollections
+     *
+     * @return void
+     */
     public function registerMediaCollections() : void
     {
         $this->addMediaCollection('avatar')
@@ -59,6 +66,12 @@ class User extends Authenticatable implements HasMedia
             });
     }
 
+    /**
+     * getAvatarAttribute
+     *
+     * @param  mixed $var
+     * @return void
+     */
     public function getAvatarAttribute( $var )
     {
         return $this->getFirstMediaUrl('avatar', 'thumb');
