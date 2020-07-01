@@ -98,7 +98,7 @@
                                 <a href="{{ route('login.provider','facebook') }}" class="btn social-btn btn-facebook" >
                                     <i class="ik-facebook ik"></i>
                                 </a>
-                                <a href="#" class="btn social-btn btn-twitter">
+                                <a href="{{ route('login.provider','twitter') }}" class="btn social-btn btn-twitter">
                                     <i class="ik-twitter ik"></i>
                                 </a>
                                 <a href="{{ route('login.provider','github') }}" class="btn social-btn btn-dark">

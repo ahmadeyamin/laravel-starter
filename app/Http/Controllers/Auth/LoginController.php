@@ -86,10 +86,15 @@ class LoginController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver($provider)->user();
+        $user = Socialite::driver($provider)->scopes([
+            'first_name', 'last_name', 'email', 'gender', 'birthday'
+        ])->user();
         // Find existing user.
         $existingUser = User::whereEmail($user->getEmail())->first();
 
+        if ($user->getEmail() == null) {
+            abort(403,'No Email Found With Your Account');
+        }
 
 
 
