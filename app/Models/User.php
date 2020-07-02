@@ -15,6 +15,7 @@ class User extends Authenticatable implements HasMedia
     use Notifiable;
     use InteractsWithMedia;
 
+        // @return \Spatie\MediaLibrary\MediaCollections\FileAdder
     /**
      * The attributes that are mass assignable.
      *

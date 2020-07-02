@@ -1,0 +1,83 @@
+<?php
+
+namespace App\Http\Livewire\Bankend\User;
+
+use App\Models\User;
+use Livewire\Component;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+
+class Create extends Component
+{
+    use WithFileUploads;
+
+    public $username;
+    public $name;
+    public $location;
+    public $website;
+    public $bio;
+    public $email;
+    public $password;
+    public $avatar;
+    public $status = true;
+    public $phone;
+    public $role;
+
+    public function mount()
+    {
+        $this->username = Str::random(10);
+    }
+
+    public function updatedName($name)
+    {
+        $this->username = Str::slug($name);
+    }
+
+    public function render()
+    {
+        return view('livewire.bankend.user.create');
+    }
+
+    public function update()
+    {
+        // $this->post->update([
+        //     'title' => $this->title,
+        // ]);
+        return session()->flash('success', 'Post successfully updated.');
+    }
+
+
+    public function save(Request $r)
+    {
+        $this->validate([
+            'name' => 'required|min:6',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+            'username' => 'required|max:20|unique:users,username',
+            'avatar' => 'nullable|image|max:1024',
+            // 'status' => 'in:1,0',
+            'phone' => 'nullable',
+            'role' => 'required|in:1,2',
+        ]);
+
+        $user = User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+            'username' => $this->username,
+            'status' => $this->status??0,
+            'role_id' => $this->role,
+        ]);
+
+        if ($this->avatar) {
+            // $user->addMediaFromURL($this->avatar->temporaryUrl())->toMediaCollection('avatar');
+        }
+
+        session()->flash('success', 'Post successfully updated.');
+
+        return redirect()->to(route('backend.users.index'));
+    }
+}

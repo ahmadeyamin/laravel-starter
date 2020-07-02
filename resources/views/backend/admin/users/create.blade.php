@@ -2,7 +2,8 @@
 
 
 @push('css')
-
+<link rel="stylesheet" href="{{ asset('plugins/mohithg-switchery/dist/switchery.min.css') }}">
+@livewireStyles
 @endpush
 
 @section('header')
@@ -17,38 +18,50 @@
         </div>
     </div>
     <div class="col-lg-4">
-        <nav class="breadcrumb-container" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active">
-                    <a href="/"><i class="ik ik-home"></i></a>
-                </li>
-                @foreach (request()->segments() as $item)
-                    <li class="breadcrumb-item">
-                        <a >{{ucfirst($item)}}</a>
-                    </li>
-                @endforeach
-
-
-            </ol>
-        </nav>
+        <x-backend.breadcrumb></x-backend.breadcrumb>
     </div>
 </div>
 @endsection
 
 @section('content')
-<div class="card-header justify-content-between">
-    <h3>Add User</h3>
-    <a class="btn btn-theme pull-right" href="{{ url()->previous() }}">Back</a>
-</div>
-<div class="card-body">
-    <div>
+<div class="">
 
-    </div>
+    <livewire:bankend.user.create />
 
 </div>
 @endsection
 
 
 @push('js')
+@livewireScripts
 
+<script src="{{ asset('/plugins/mohithg-switchery/dist/switchery.min.js') }}"></script>
+
+<script>
+    var elemsingle = document.querySelector('#checkbox');
+
+    function checkbox() {
+        var switchery = new Switchery(elemsingle, {
+                color: '#4099ff',
+                jackColor: '#fff',
+                size: 'small'
+        });
+    }
+
+    document.addEventListener("livewire:load", function(event) {
+        window.livewire.hook('beforeDomUpdate', () => {
+            // checkbox();
+
+        });
+
+        window.livewire.hook('afterDomUpdate', () => {
+            checkbox();
+
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded',function(event) {
+        checkbox();
+    })
+</script>
 @endpush

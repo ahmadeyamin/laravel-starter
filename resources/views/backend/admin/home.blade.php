@@ -12,24 +12,15 @@
         </div>
     </div>
     <div class="col-lg-4">
-        <nav class="breadcrumb-container" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active">
-                    <a href="/"><i class="ik ik-home"></i></a>
-                </li>
-                @foreach (request()->segments() as $item)
-                <li class="breadcrumb-item">
-                    <a >{{ucfirst($item)}}</a>
-                </li>
-            @endforeach
-            </ol>
-        </nav>
+        <x-backend.breadcrumb></x-backend.breadcrumb>
     </div>
 </div>
 @endsection
 
 @section('content')
-<div class="container">
-    <h2>Home </h2>
+<div class="card">
+    <div class="container card-body">
+        <h2>Home </h2>
+    </div>
 </div>
 @endsection

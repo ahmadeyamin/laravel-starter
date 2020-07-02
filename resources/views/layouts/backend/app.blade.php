@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="{{ asset('plugins/icon-kit/dist/css/iconkit.min.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/theme.css') }}">
-
+        <link rel="stylesheet" href="{{ asset('plugins/jquery-toast-plugin/dist/jquery.toast.min.css') }}">
 
         <script>
             // Turbolinks.start();
@@ -152,11 +152,11 @@
                             @yield('header')
                         </div>
 
-                        <div class="card">
+                        {{-- <div class="card"> --}}
 
                             @yield('content')
 
-                        </div>
+                        {{-- </div> --}}
 
                     </div>
                 </div>
@@ -201,6 +201,7 @@
 
 
 
+
         <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}" ></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"  ></script>
         <script src="{{ asset('plugins/popper.js/dist/umd/popper.min.js') }}" data-turbolinks-eval='false'></script>
@@ -208,9 +209,12 @@
         <script src="{{ asset('plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}" ></script>
         <script src="{{ asset('plugins/screenfull/dist/screenfull.js') }}" ></script>
         <script src="{{ asset('dist/js/theme.js') }}" data-turbolinks-eval='true' > </script>
-
+        <script src="{{ asset('plugins/jquery-toast-plugin/dist/jquery.toast.min.js') }}"></script>
 
         @stack('js')
 
+        @if (Session::has('success') || $errors->any())
+        <x-alert></x-alert>
+        @endif
     </body>
 </html>

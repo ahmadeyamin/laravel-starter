@@ -28,9 +28,9 @@ class DataTablesController extends Controller
         ->addColumn('action', function ($var) {
             return '
 
-            <a href="#" class="btn btn-success btn-sm"> <i class="ik ik-eye"></i></a>
+            <a href="#" class="btn btn-success btn-sm"> <i class="ik ik-eye"></i> Show</a>
 
-            <a href="#" class="btn btn-danger btn-sm"><i class="ik ik-edit"></i></a>
+            <a href="#" class="btn btn-danger btn-sm"><i class="ik ik-edit"></i> Edit</a>
 
             ';
         })

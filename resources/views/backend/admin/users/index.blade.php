@@ -12,19 +12,7 @@
         </div>
     </div>
     <div class="col-lg-4">
-        <nav class="breadcrumb-container" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active">
-                    <a href="/"><i class="ik ik-home"></i></a>
-                </li>
-                @foreach (request()->segments() as $item)
-                    <li class="breadcrumb-item">
-                        <a >{{ucfirst($item)}}</a>
-                    </li>
-                @endforeach
-
-            </ol>
-        </nav>
+        <x-backend.breadcrumb></x-backend.breadcrumb>
     </div>
 </div>
 @endsection
@@ -38,29 +26,31 @@
 
 
 @section('content')
-<div class="card-header justify-content-between">
-    <h3>Users</h3>
-    <a class="btn btn-theme pull-right" href="{{ route('backend.users.create') }}">Add User <i class="ik ik-user-plus"></i></a>
-</div>
-<div class="card-body">
-    <div>
-        <table id="data_table" class="table">
-            <thead class="">
-                <tr>
-                    <th>ID</th>
-                    <th>Avatar</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Last Active</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-        </table>
+<div class="card">
+    <div class="card-header justify-content-between">
+        <h3>Users</h3>
+        <a class="btn btn-theme pull-right" href="{{ route('backend.users.create') }}">Add User <i class="ik ik-user-plus"></i></a>
     </div>
+    <div class="card-body">
+        <div>
+            <table id="data_table" class="table">
+                <thead class="">
+                    <tr>
+                        <th>ID</th>
+                        <th>Avatar</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Last Active</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
+                    </tbody>
+            </table>
+        </div>
+
+    </div>
 </div>
 @endsection
 

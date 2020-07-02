@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
+     * avatar
+     *
+     * @var mixed
+     */
+    public $avatar;
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
