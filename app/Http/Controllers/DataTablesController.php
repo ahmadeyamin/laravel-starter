@@ -23,7 +23,7 @@ class DataTablesController extends Controller
             return "<img class='avatar_user shadow' src='$var->avatar'/>";
         })
         ->editColumn('created_at', function ($var) {
-            return $var->created_at->format('Y-m-d | h:iA');
+            return datetime($var->created_at);
         })
         ->addColumn('action', function ($var) {
             return '

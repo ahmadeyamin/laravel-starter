@@ -1,7 +1,5 @@
 @extends('layouts.backend.app')
 
-
-
 @section('header')
 <div class="row align-items-end">
     <div class="col-lg-8">
@@ -19,6 +17,11 @@
                 <li class="breadcrumb-item active">
                     <a href="/"><i class="ik ik-home"></i></a>
                 </li>
+                @foreach (request()->segments() as $item)
+                    <li class="breadcrumb-item">
+                        <a >{{ucfirst($item)}}</a>
+                    </li>
+                @endforeach
 
             </ol>
         </nav>
@@ -32,6 +35,34 @@
 <link rel="stylesheet" href="{{ asset('plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
 @endpush
 
+
+
+@section('content')
+<div class="card-header justify-content-between">
+    <h3>Users</h3>
+    <a class="btn btn-theme pull-right" href="{{ route('backend.users.create') }}">Add User <i class="ik ik-user-plus"></i></a>
+</div>
+<div class="card-body">
+    <div>
+        <table id="data_table" class="table">
+            <thead class="">
+                <tr>
+                    <th>ID</th>
+                    <th>Avatar</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Last Active</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+        </table>
+    </div>
+
+</div>
+@endsection
 
 
 
@@ -88,28 +119,3 @@ $(document).ready(function() {
 })
 </script>
 @endpush
-
-@section('content')
-<div class="card-header justify-content-between"><h3>Users</h3> <a class="btn btn-theme pull-right" href="/">Add User <i class="ik ik-user-plus"></i></a> </div>
-<div class="card-body">
-
-    <div>
-        <table id="data_table" class="table">
-            <thead class="">
-                <tr>
-                    <th>ID</th>
-                    <th>Avatar</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Last Active</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-        </table>
-    </div>
-
-</div>
-@endsection
