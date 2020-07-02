@@ -60,8 +60,12 @@
                         <img src="{{ asset('avatar.jpg') }}" class="rounded-circle shadow">
                         @endif
                     </label>
-
-                    <input id="avatar" class="d-none" type="file" wire:model.lazy="avatar">
+                    @error('avatar')
+                        <div class="invalid-feedback d-block">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    <input id="avatar" class="d-none" type="file" wire:model="avatar">
 
                     <h4 class="card-title mt-10"> {{$name??'Jone Smith'}}</h4>
 
@@ -81,10 +85,15 @@
                 <div class="">
                     <div class="form-group">
                         <label for="country">Select Role</label>
-                        <select wire:model.lazy="role" class="form-control">
+                        <select wire:model.lazy="role" class="form-control @error('role') is-invalid @enderror">
                             <option value="1">User</option>
                             <option value="2">Admin</option>
                         </select>
+                        @error('role')
+                        <div class="invalid-feedback d-block">
+                            {{ $message }}
+                        </div>
+                    @enderror
                     </div>
                 </div>
 

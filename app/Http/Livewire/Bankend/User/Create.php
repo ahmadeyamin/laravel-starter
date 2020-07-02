@@ -36,21 +36,21 @@ class Create extends Component
         $this->username = Str::slug($name);
     }
 
+    public function updatedAvatar()
+    {
+        $this->validate([
+            'avatar' => 'nullable|image|max:1024'
+        ]);
+    }
+
     public function render()
     {
         return view('livewire.bankend.user.create');
     }
 
-    public function update()
-    {
-        // $this->post->update([
-        //     'title' => $this->title,
-        // ]);
-        return session()->flash('success', 'Post successfully updated.');
-    }
 
 
-    public function save(Request $r)
+    public function save()
     {
         $this->validate([
             'name' => 'required|min:6',
@@ -62,7 +62,7 @@ class Create extends Component
             'phone' => 'nullable',
             'role' => 'required|in:1,2',
         ]);
-
+        // $user = User::find(2);
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
@@ -73,7 +73,10 @@ class Create extends Component
         ]);
 
         if ($this->avatar) {
-            // $user->addMediaFromURL($this->avatar->temporaryUrl())->toMediaCollection('avatar');
+            $user
+            ->addMedia($this->avatar->getRealPath())
+            ->preservingOriginal()
+            ->toMediaCollection('avatar');
         }
 
         session()->flash('success', 'Post successfully updated.');
