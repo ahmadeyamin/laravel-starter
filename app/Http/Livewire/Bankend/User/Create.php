@@ -36,6 +36,11 @@ class Create extends Component
         $this->username = Str::slug($name);
     }
 
+    public function updatedUserName($username)
+    {
+        $this->username = Str::slug($username);
+    }
+
     public function updatedAvatar()
     {
         $this->validate([

@@ -15,7 +15,7 @@ class DataTablesController extends Controller
      */
     public function users()
     {
-        $users = User::select(['id','name','email','created_at'])->get();
+        $users = User::with('media')->select(['id','name','email','created_at'])->get();
 
         return Datatables::of($users)
         ->editColumn('avatar', function ($var)
@@ -30,7 +30,7 @@ class DataTablesController extends Controller
 
             <a href="#" class="btn btn-success btn-sm"> <i class="ik ik-eye"></i> Show</a>
 
-            <a href="#" class="btn btn-danger btn-sm"><i class="ik ik-edit"></i> Edit</a>
+            <a href="'.route("backend.users.edit",$var->id).'" class="btn btn-danger btn-sm"><i class="ik ik-edit"></i> Edit</a>
 
             ';
         })
