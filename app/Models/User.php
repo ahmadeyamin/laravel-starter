@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -15,7 +16,6 @@ class User extends Authenticatable implements HasMedia
     use Notifiable;
     use InteractsWithMedia;
 
-        // @return \Spatie\MediaLibrary\MediaCollections\FileAdder
     /**
      * The attributes that are mass assignable.
      *
@@ -68,6 +68,28 @@ class User extends Authenticatable implements HasMedia
     }
 
     /**
+     * getAllUsers
+     *
+     * @return void
+     */
+    public static function getAllUsers()
+    {
+        return Cache::rememberForever('users.all', function() {
+            return self::with('role')->latest('id')->get();
+        });
+    }
+
+    /**
+     * flush Cache
+     *
+     * @return void
+     */
+    public static function flushCache()
+    {
+        Cache::forget('users.all');
+    }
+
+    /**
      * getAvatarAttribute
      *
      * @param  mixed $var
@@ -77,4 +99,26 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->getFirstMediaUrl('avatar', 'thumb');
     }
+
+    /**
+     * role
+     *
+     * @return void
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+
+
+    public function hasPermission($permission): bool
+    {
+        return $this->role->permissions()->where('slug', $permission)->first() ? true : false;
+    }
+
+    // public function scopeHasPermission($query,$slug)
+    // {
+    //     return $this->role->whereFirst('slug', $slug);
+    // }
 }
