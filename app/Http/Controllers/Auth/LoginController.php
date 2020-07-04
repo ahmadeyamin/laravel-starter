@@ -129,7 +129,11 @@ class LoginController extends Controller
             ]);
             // upload images
             if ($user->getAvatar()) {
-                $newUser->addMediaFromUrl($user->getAvatar())->toMediaCollection('avatar');
+                try {
+                    $newUser->addMediaFromUrl($user->getAvatar())->toMediaCollection('avatar');
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
             }
             Auth::login($newUser);
         }

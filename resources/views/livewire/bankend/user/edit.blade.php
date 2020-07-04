@@ -42,7 +42,7 @@
                     <textarea name="message" wire:model.lazy="bio" rows="5" class="form-control"></textarea>
                 </div>
 
-                <button class="btn btn-success" type="submit">Create Profile</button>
+                <button class="btn btn-success" type="submit">Update Profile</button>
             </div>
         </div>
     </div>
@@ -90,8 +90,11 @@
                     <div class="form-group">
                         <label for="country">Select Role</label>
                         <select wire:model.lazy="role" class="form-control @error('role') is-invalid @enderror">
-                            <option value="1" @if($user->role_id == '1') selected="" @endif >User</option>
-                            <option value="2" @if($user->role_id == '2') selected="" @endif >Admin</option>
+                            @foreach ($roles as $role)
+                            <option value="{{$role->id}}" @if($user->role_id == $role->id) selected="" @endif >
+                                {{$role->name}}
+                            </option>
+                            @endforeach
                         </select>
 
                         @error('role')

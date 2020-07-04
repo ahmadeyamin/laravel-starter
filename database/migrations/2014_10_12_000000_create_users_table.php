@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('role_id');
+            $table->foreignId('role_id')->constrained()->onDelete(null);
             $table->boolean('status')->default(false);
             $table->boolean('is_blocked')->default(false);
             $table->string('username')->unique();

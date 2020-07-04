@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Bankend\User;
 
+use App\Models\Role;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -23,6 +24,7 @@ class Edit extends Component
     public $avatarNew;
     public $status;
     public $phone;
+    public $roles = [];
     public $role;
 
 
@@ -31,7 +33,7 @@ class Edit extends Component
     public function mount($user)
     {
         $this->user = $user;
-
+        $this->roles = Role::all();
         $this->name = $user->name;
         $this->email = $user->email;
         $this->bio = $user->bio;

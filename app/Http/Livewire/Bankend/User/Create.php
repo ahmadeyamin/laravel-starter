@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Bankend\User;
 
+use App\Models\Role;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -24,10 +25,12 @@ class Create extends Component
     public $avatar;
     public $status = true;
     public $phone;
+    public $roles = [];
     public $role;
 
     public function mount()
     {
+        $this->roles = Role::all();
         $this->username = Str::random(10);
     }
 

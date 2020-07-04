@@ -15,26 +15,41 @@ class DataTablesController extends Controller
      */
     public function users()
     {
-        $users = User::with('media')->select(['id','name','email','created_at'])->get();
+        $users = User::with(['role'])
+        ->get();
 
         return Datatables::of($users)
         ->editColumn('avatar', function ($var)
         {
             return "<img class='avatar_user shadow' src='$var->avatar'/>";
         })
-        ->editColumn('created_at', function ($var) {
-            return datetime($var->created_at);
+        ->editColumn('last_login_at', function ($var) {
+            return datetime($var->last_login_at);
+        })
+        ->editColumn('role', function ($var) {
+            return '<span class="badge badge-success">'.$var->role->name.'</span>';
         })
         ->addColumn('action', function ($var) {
             return '
+            <a href="'.route("backend.users.show",$var->id).'" class="btn btn-success btn-sm"> <i class="ik ik-eye"></i> Show</a>
 
-            <a href="#" class="btn btn-success btn-sm"> <i class="ik ik-eye"></i> Show</a>
-
-            <a href="'.route("backend.users.edit",$var->id).'" class="btn btn-danger btn-sm"><i class="ik ik-edit"></i> Edit</a>
-
-            ';
+            <a href="'.route("backend.users.edit",$var->id).'" class="btn btn-danger btn-sm"><i class="ik ik-edit"></i> Edit</a>';
         })
-        ->escapeColumns([])
-		->toJson();
+        ->makeHidden([
+            'role_id',
+            'is_blocked',
+            'location',
+            'bio',
+            'website',
+            'last_seen_at',
+            'deleted_at',
+            'created_at',
+            'last_login_ip',
+            'email_verified_at',
+            'status',
+            'updated_at',
+        ])
+        ->escapeColumns(['action'])
+		->make();
     }
 }

@@ -117,7 +117,12 @@
 
                                     <a class="dropdown-item" href="#"><i class="ik ik-settings dropdown-icon"></i> Settings</a>
 
-                                    <a class="dropdown-item" href="../login.html"><i class="ik ik-power dropdown-icon"></i> Logout</a>
+                                    <a class="dropdown-item" onclick="$('#logout-form').submit()" href="javascript:void(0)"><i class="ik ik-power dropdown-icon"></i> Logout</a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                    @method('post')
+                                    </form>
                                 </div>
                             </div>
 

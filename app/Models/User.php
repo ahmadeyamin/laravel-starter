@@ -57,8 +57,8 @@ class User extends Authenticatable implements HasMedia
     {
         $this->addMediaCollection('avatar')
             ->singleFile()
-            ->useFallbackUrl(config('app.placeholder').'default.png')
-            ->useFallbackPath(config('app.placeholder').'default.png')
+            ->useFallbackUrl(config('app.placeholder'))
+            ->useFallbackPath(config('app.placeholder'))
             ->registerMediaConversions(function (Media $media) {
                 $this
                     ->addMediaConversion('thumb')

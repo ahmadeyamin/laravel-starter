@@ -11,6 +11,6 @@ if (!function_exists('datetime')) {
      */
     function datetime($date)
     {
-        return $date->format('m/d/Y h:iA');
+        return $date ? $date->format('m/d/Y h:iA') : 'Empty';
     }
 }

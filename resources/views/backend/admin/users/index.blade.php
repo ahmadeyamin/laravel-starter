@@ -40,6 +40,7 @@
                         <th>Avatar</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Role</th>
                         <th>Last Active</th>
                         <th>Action</th>
                     </tr>
@@ -95,8 +96,13 @@ $(document).ready(function() {
                     // width: '50%'
                 },
                 {
-                    data: 'created_at',
-                    name: 'created_at',
+                    data: 'role',
+                    name: 'role',
+                    // width: '50%'
+                },
+                {
+                    data: 'last_login_at',
+                    name: 'last_login_at',
                 },
                 {
                     data: 'action',

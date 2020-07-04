@@ -90,8 +90,11 @@
                     <div class="form-group">
                         <label for="country">Select Role</label>
                         <select wire:model.lazy="role" class="form-control @error('role') is-invalid @enderror">
-                            <option value="1">User</option>
-                            <option value="2">Admin</option>
+                            @foreach ($roles as $role)
+                            <option value="{{$role->id}}" >
+                                {{$role->name}}
+                            </option>
+                            @endforeach
                         </select>
                         @error('role')
                         <div class="invalid-feedback d-block">
