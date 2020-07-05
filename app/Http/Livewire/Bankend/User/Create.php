@@ -68,7 +68,7 @@ class Create extends Component
             'avatar' => 'nullable|image|max:1024',
             // 'status' => 'in:1,0',
             'phone' => 'nullable',
-            'role' => 'required|in:1,2',
+            'role' => 'required|exists:roles,id',
         ]);
         // $user = User::find(2);
         $user = User::create([

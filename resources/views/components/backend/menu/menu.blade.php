@@ -4,20 +4,24 @@
         <div class="nav-item @if(request()->routeIs('backend.home'))  active @endif">
             <a href="{{ route('backend.home') }}"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
         </div>
-        <div class="nav-item @if(request()->routeIs('backend.users*'))  active @endif">
-            <a href="{{ route('backend.users.index') }}"><i class="ik ik-user"></i><span>Users</span></a>
-        </div>
-        <div class="nav-item has-sub">
-            <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Widgets</span> <span class="badge badge-danger">150+</span></a>
+
+
+        <div class="nav-lavel">Access</div>
+
+
+        <div class="nav-item has-sub @if(request()->routeIs('backend.users*')) open @endif">
+            <a href="javascript:void(0)"><i class="ik ik-user"></i><span>Users</span></a>
             <div class="submenu-content">
-                <a href="widgets.html" class="menu-item">Basic</a>
-                <a href="widget-statistic.html" class="menu-item">Statistic</a>
-                <a href="widget-data.html" class="menu-item">Data</a>
-                <a href="widget-chart.html" class="menu-item">Chart Widget</a>
+                <a href="{{ route('backend.users.index') }}" class="menu-item @if(request()->routeIs('backend.users.index')) active @endif">All Users</a>
+                <a href="{{ route('backend.users.create') }}" class="menu-item @if(request()->routeIs('backend.users.create')) active @endif">Add User</a>
             </div>
         </div>
-        <div class="nav-lavel">UI Element</div>
-        <div class="nav-item has-sub">
+
+
+        <div class="nav-item @if(request()->routeIs('backend.roles*'))  active @endif">
+            <a href="{{ route('backend.roles.index') }}"><i class="ik ik-shield-off"></i><span>Roles</span></a>
+        </div>
+        {{-- <div class="nav-item has-sub">
             <a href="#"><i class="ik ik-box"></i><span>Basic</span></a>
             <div class="submenu-content">
                 <a href="alerts.html" class="menu-item">Alerts</a>
@@ -131,6 +135,6 @@
         </div>
         <div class="nav-item">
             <a href="javascript:void(0)"><i class="ik ik-help-circle"></i><span>Submit Issue</span></a>
-        </div>
+        </div> --}}
     </nav>
 </div>

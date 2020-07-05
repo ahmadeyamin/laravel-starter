@@ -26,5 +26,6 @@ Route::group(['as'=>'login.','prefix'=>'login','namespace'=>'Auth'], function ()
 Route::group(['middleware' => ['auth'],'prefix' => 'app','namespace'=>'Backend','as'=>'backend.'], function () {
     Route::get('home', 'Admin\HomeController@index')->name('home');
     Route::resource('users', 'Admin\UserController');
+    Route::resource('roles', 'Admin\RoleController');
 });
 

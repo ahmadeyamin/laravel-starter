@@ -34,7 +34,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
                         <div class="authentication-form mx-auto">
                             <div class="logo-centered">
-                                <a href="{{ route('home') }}"><img src="{{ asset('src/img/brand.svg') }}" alt="logo"></a>
+                                <a href="{{ route('backend.home') }}"><img src="{{ asset('src/img/brand.svg') }}" alt="logo"></a>
                             </div>
                             <h3>New to Laravel-Starter</h3>
                             <p>Join us today! It takes only few steps</p>
