@@ -22,10 +22,7 @@
                         <input
                         type="checkbox"
                         class="form-check-input checkbox"
-                        {{-- @if($permission->hasRole($roleId)) checked @endif --}}
-                        {{-- name="apppermission[]" --}}
                         value="{{$permission->id}}"
-                        {{-- wire:change="$set('apppermission.{{$permission->id}}',false)" --}}
                         id="{{ rand() }}"
                         wire:model="apppermission.{{$permission->id}}"
                         />
@@ -53,22 +50,3 @@
 
     </form>
 </div>
-
-
-
-<script defer>
-    // window.addEventListener('load',e=>{
-    //     document.getElementById('dfudyf').addEventListener('submit',e=>{
-    //         e.preventDefault();
-    //         console.log(checkedarray);
-
-    //     })
-    //     console.log('ok');
-    // })
-
-    // function submit_all() {
-    //     console.log(checkedarray);
-    //     @this.set('permissions', checkedarray);
-    //     document.getElementById('dfudyf').submit();
-    // }
-</script>

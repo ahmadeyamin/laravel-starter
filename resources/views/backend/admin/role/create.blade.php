@@ -3,8 +3,6 @@
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('plugins/mohithg-switchery/dist/switchery.min.css') }}">
-
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
     @livewireStyles
 @endpush
 
@@ -26,7 +24,7 @@
 @endsection
 
 @section('content')
-<div class="">
+<div>
 
     <div class="card">
         <div class="card-body">
@@ -51,9 +49,7 @@
 @push('js')
 @livewireScripts
 
-<script src="{{ asset('plugins/mohithg-switchery/dist/switchery.min.js') }}">
-</script>
-
+<script src="{{ asset('plugins/mohithg-switchery/dist/switchery.min.js') }}"></script>
 
 
 <script>
@@ -69,47 +65,13 @@
         });
     }
 
-    // var checkedarray = [];
-
     document.addEventListener("livewire:load", function (event) {
         window.livewire.hook('afterDomUpdate', () => {
             checkbox();
-
-            // checkedarray = []
-            // $('.checkbox').each((e,i)=>{
-            //     var val = $(i).val();
-            //     if (i.checked) {
-            //         checkedarray.push(parseInt(val));
-            //     }
-            // });
-
-            // // checkedarray = []
-
-
-
-            // $('.checkbox').change(function() {
-            //     checkedarray = []
-            //     $('.checkbox').each((e,i)=>{
-            //         var val = $(i).val();
-            //         if (i.checked) {
-            //             checkedarray.push(parseInt(val));
-            //         }
-            //     });
-            // });
         });
 
         window.livewire.hook('beforeDomUpdate', () => {
-            // console.log('beforeDomUpdate');
-
-            // $('.checkbox').each((e,i)=>{
-            //     var val = $(i).val();
-            //     checkedarray.push(Array(
-            //         parseInt(val),
-            //         i.checked,
-            //     ));
-            // });
-
-            // console.log(checkedarray);
+            $('.switchery').hide();
         });
     });
 
@@ -122,8 +84,6 @@
     })
 
     window.addEventListener('notify',e=>{
-        console.log(e);
-
         $.toast({
             heading: e.detail.type,
             text: e.detail.message,
@@ -136,5 +96,3 @@
 
 </script>
 @endpush
-
-{{-- @this.set('permissions', checkedarray); --}}

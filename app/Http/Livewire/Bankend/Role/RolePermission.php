@@ -32,8 +32,8 @@ class RolePermission extends Component
         $this->roleId = (int) $id;
         // dd($this->roleId );
         if ($this->roleId != 0) {
-            $this->modules = Module::all();
-            $this->apppermission = Role::find($this->roleId)->permissions->pluck('id','id')->toArray();
+            $this->modules = Module::getAllModules();
+            $this->apppermission = Role::with('permissions')->find($this->roleId)->permissions->pluck('id','id')->toArray();
             // dd($this->apppermission);
         }else{
             $this->modules = [];

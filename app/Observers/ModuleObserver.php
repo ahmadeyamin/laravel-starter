@@ -14,7 +14,7 @@ class ModuleObserver
      */
     public function created(Module $module)
     {
-        //
+        return Module::flushCache();
     }
 
     /**
@@ -25,7 +25,7 @@ class ModuleObserver
      */
     public function updated(Module $module)
     {
-        //
+        return Module::flushCache();
     }
 
     /**
@@ -36,7 +36,7 @@ class ModuleObserver
      */
     public function deleted(Module $module)
     {
-        //
+        return Module::flushCache();
     }
 
     /**

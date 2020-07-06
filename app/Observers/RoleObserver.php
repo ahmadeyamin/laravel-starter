@@ -14,7 +14,7 @@ class RoleObserver
      */
     public function created(Role $role)
     {
-        //
+        Role::flushCache();
     }
 
     /**
@@ -25,7 +25,7 @@ class RoleObserver
      */
     public function updated(Role $role)
     {
-        //
+        Role::flushCache();
     }
 
     /**
@@ -36,7 +36,7 @@ class RoleObserver
      */
     public function deleted(Role $role)
     {
-        //
+        Role::flushCache();
     }
 
     /**

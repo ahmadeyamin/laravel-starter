@@ -19,7 +19,7 @@ class Create extends Component
     public function mount()
     {
 
-        $this->roles = Role::all();
+        $this->roles = Role::getAllRoles();
         $this->selectedRole = 'select';
     }
 
@@ -73,7 +73,7 @@ class Create extends Component
         $this->description = '';
 
 
-        $this->roles = Role::all();
+        $this->roles = Role::getAllRoles();
         $this->approle = $role->id;
         $this->emit('roleSelectChanged',$this->approle);
 
