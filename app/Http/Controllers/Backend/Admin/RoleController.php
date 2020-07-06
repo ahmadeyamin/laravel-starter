@@ -24,7 +24,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.admin.role.create');
     }
 
     /**

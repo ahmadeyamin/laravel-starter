@@ -29,7 +29,7 @@
 <div class="card">
     <div class="card-header justify-content-between">
         <h3>Roles</h3>
-        <a class="btn btn-theme pull-right" href="{{ route('backend.users.create') }}">Add Role <i class="ik ik-plus"></i></a>
+        <a class="btn btn-theme pull-right" href="{{ route('backend.roles.create') }}">Add Role <i class="ik ik-plus"></i></a>
     </div>
     <div class="card-body">
         <div>

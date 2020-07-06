@@ -49,6 +49,11 @@ class Permission extends Model
         return $this->belongsTo(Module::class);
     }
 
+    public function hasRole($roleId)
+    {
+        // return true;
+        return $this->roles->where('id',$roleId)->first() ? true : false;
+    }
 
     /**
      * roles

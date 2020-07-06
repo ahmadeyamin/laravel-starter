@@ -219,7 +219,7 @@
         @stack('js')
 
         @if (Session::has('success') || $errors->any())
-        <x-alert></x-alert>
+            <x-alert></x-alert>
         @endif
     </body>
 </html>

@@ -12,8 +12,6 @@ $.toast({
 @endif
 
 
-console.log('hello')
-
 @if ($errors->any())
 
 @foreach ($errors->all() as $error)
