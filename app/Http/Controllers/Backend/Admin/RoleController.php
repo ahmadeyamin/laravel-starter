@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Backend\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Role;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
@@ -57,7 +58,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Role::find($id);
+        return view('backend.admin.role.edit',compact('id'));
     }
 
     /**

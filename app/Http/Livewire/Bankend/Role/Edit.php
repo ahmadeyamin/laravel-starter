@@ -6,10 +6,11 @@ use App\Models\Role;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
-class Create extends Component
+class Edit extends Component
 {
     public $selectedRole ;
     public $name;
+    public $roleid;
     public $slug;
     public $description;
     public $roles;
@@ -19,13 +20,20 @@ class Create extends Component
     /**
      * mount
      *
+     * @param  mixed $id
      * @return void
      */
-    public function mount()
+    public function mount($id)
     {
+
         $this->roles = Role::getAllRoles();
-        // $this->selectedRole;
+        $this->selectedRole = Role::find($id);
+        $this->name = $this->selectedRole->name;
+        $this->roleid = $this->selectedRole->id;
+        $this->slug = $this->selectedRole->slug;
+        $this->description = $this->selectedRole->description;
     }
+
 
     /**
      * updatedName
@@ -74,7 +82,7 @@ class Create extends Component
      */
     public function render()
     {
-        return view('livewire.bankend.role.create');
+        return view('livewire.bankend.role.edit');
     }
 
     /**
@@ -84,13 +92,15 @@ class Create extends Component
      */
     public function save()
     {
+        $role = Role::findOrFail($this->roleid);
+
         $this->validate([
-            'name' => 'required|min:3|unique:roles,name',
-            'slug' => 'required|unique:roles,slug',
+            'name' => 'required|min:3|unique:roles,name,'.$role->id,
+            'slug' => 'required|unique:roles,slug,'.$role->id,
             'description' => 'nullable',
         ]);
 
-        $role  = Role::create([
+        $role->update([
             'name' => $this->name,
             'slug' => $this->slug,
             'description' => $this->description,
@@ -110,7 +120,40 @@ class Create extends Component
 
         $this->dispatchBrowserEvent('notify',[
             'type' => 'Success',
-            'message' =>'Role Created successfully.',
+            'message' =>'Role Updated successfully.',
         ]);
+    }
+
+
+    /**
+     * delete
+     *
+     * @return void
+     */
+    public function delete()
+    {
+        $role = Role::findOrFail($this->roleid);
+
+        if ($role->deletable) {
+            return $this->dispatchBrowserEvent('notify',[
+                'type' => 'Error',
+                'message' =>'This Role Is Not Deletable',
+            ]);
+        }
+
+        if ($role->users->count() > 0) {
+            return $this->dispatchBrowserEvent('notify',[
+                'type' => 'Error',
+                'message' =>'This Role has Some Users Please Remove Users First.',
+            ]);
+        }else{
+
+            $role->delete();
+
+
+            session()->flash('success', 'Role Deleted successfully.');
+
+            return redirect()->to(route('backend.roles.index'));
+        }
     }
 }

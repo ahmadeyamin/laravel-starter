@@ -19,10 +19,9 @@
                 </select>
             </div>
             <div class="col col-sm-12 col-md-1 mt-2">
-                <a href="javascript:void(0)" wire:click.prevent="selecteRolesEmpty" class="btn btn-success btn-icon"><i class="ik ik-plus"></i></a>
+                <a href="javascript:void(0)" wire:click.prevent="selecteRolesEmpty" class="btn btn-success btn-icon"><i class="ik ik-edit"></i></a>
             </div>
         </div>
-
 
         @else
         <form wire:submit.prevent="save" action="#" method="post">
@@ -35,6 +34,11 @@
                         Role Name For user group
                     </small>
                     @error('name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    @error('slug')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -55,7 +59,12 @@
             <br>
             @csrf
 
-            <button type="submit" @if(!$name) disabled  @endif wire:click="save" name="save" id="save" class="btn btn-primary btn-lg shadow"><i class="ik ik-check-circle"></i>  Save</button>
+            <div class="">
+                <button type="submit" @if(!$name) disabled  @endif wire:click="save" name="save" id="save" class="btn btn-success shadow btn-lg"><i class="ik ik-check-circle"></i> Update</button>
+
+                <button type="button" onclick="return confirm('Are You Sure. It Will Make User Role Empty') ? @this.call('delete') : false;
+                " name="delete" id="delete" class="btn float-right shadow btn-danger btn-lg"> <i class="ik ik-trash"></i> Delete</button>
+            </div>
         </form>
         @endif
 

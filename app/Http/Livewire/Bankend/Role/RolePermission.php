@@ -16,25 +16,22 @@ class RolePermission extends Component
 
     ];
 
-    protected $listeners = ['roleSelectChanged' => 'roleSelectChanged'];
-
-    public function mount()
-    {
+    protected $listeners = ['roleSelectChanged'];
 
 
-    }
-    public function apppermissionChanged($f)
-    {
-        dd($f);
-    }
+    /**
+     * roleSelectChanged
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function roleSelectChanged($id = null)
     {
         $this->roleId = (int) $id;
-        // dd($this->roleId );
+
         if ($this->roleId != 0) {
             $this->modules = Module::getAllModules();
             $this->apppermission = Role::with('permissions')->find($this->roleId)->permissions->pluck('id','id')->toArray();
-            // dd($this->apppermission);
         }else{
             $this->modules = [];
             $this->apppermission = [];
@@ -43,6 +40,11 @@ class RolePermission extends Component
 
     }
 
+    /**
+     * render
+     *
+     * @return void
+     */
     public function render()
     {
         return view('livewire.bankend.role.role-permission');
@@ -50,6 +52,11 @@ class RolePermission extends Component
 
 
 
+    /**
+     * save
+     *
+     * @return void
+     */
     public function save()
     {
         $data = collect($this->apppermission)->filter();

@@ -66,14 +66,14 @@ class Edit extends Component
     public function update()
     {
         $this->validate([
-            'name' => 'required|min:6',
+            'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email,'.$this->user->id,
             'password' => 'nullable|min:8',
             'username' => 'required|max:20|unique:users,username,'.$this->user->id,
             'avatarNew' => 'nullable|image|max:1024',
             // 'status' => 'in:1,0',
             'phone' => 'nullable',
-            'role' => 'required|in:1,2',
+            'role' => 'required|exists:roles,id',
         ]);
 
         $user = User::findOrFail($this->user->id);

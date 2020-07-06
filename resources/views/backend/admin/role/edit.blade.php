@@ -13,8 +13,8 @@
         <div class="page-header-title">
             <i class="ik ik-shield-off bg-blue"></i>
             <div class="d-inline">
-                <h5>@yield('h2','Add Role & Premission')</h5>
-                <span>@yield('span','Add New Roles, Premissions To Website')</span>
+                <h5>@yield('h2','Edit Role & Premission')</h5>
+                <span>@yield('span','Edit Roles, Premissions')</span>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
     <div class="card">
         <div class="card-body">
             <div class="border rounded shadow-sm border-primary p-3">
-                <livewire:bankend.role.create />
+                <livewire:bankend.role.edit id="{{$id}}" />
             </div>
             <br>
 
@@ -71,8 +71,8 @@
             checkbox();
             selectChanged();
             $(".select2").select2();
-        });
 
+        });
         window.livewire.hook('beforeDomUpdate', () => {
             $('.switchery').hide();
         });
@@ -82,6 +82,12 @@
         checkbox();
         selectChanged();
         $(".select2").select2();
+
+    })
+
+    $(window).ready(e=>{
+
+        window.livewire.emit('roleSelectChanged','{{$id}}');
     })
 
     function selectChanged(){

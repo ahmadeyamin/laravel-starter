@@ -61,7 +61,7 @@ class Create extends Component
     public function save()
     {
         $this->validate([
-            'name' => 'required|min:6',
+            'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'username' => 'required|max:20|unique:users,username',

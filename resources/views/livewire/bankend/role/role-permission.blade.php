@@ -45,7 +45,7 @@
             </div>
             @enderror
 
-            <button  type="submit" class="btn btn-primary @if(!$modules) d-none @endif mx-3" >Save</button>
+            <button  type="submit" class="shadow btn btn-primary @if(!$modules) d-none @endif mx-3" ><i class="ik ik-check-circle"></i> Save</button>
         </div>
 
     </form>
