@@ -28,13 +28,13 @@ class DataTablesController extends Controller
             return datetime($var->last_login_at);
         })
         ->editColumn('role', function ($var) {
-            return '<span class="badge badge-success">'.$var->role->name.'</span>';
+            return '<span class="badge shadow badge-success">'.$var->role->name.'</span>';
         })
         ->addColumn('action', function ($var) {
             return '
-            <a href="'.route("backend.users.show",$var->id).'" class="btn btn-success btn-sm"> <i class="ik ik-eye"></i> Show</a>
+            <a href="'.route("backend.users.show",$var->id).'" class="btn btn-success shadow btn-sm"> <i class="ik ik-eye"></i> Show</a>
 
-            <a href="'.route("backend.users.edit",$var->id).'" class="btn btn-danger btn-sm"><i class="ik ik-edit"></i> Edit</a>';
+            <a href="'.route("backend.users.edit",$var->id).'" class="btn btn-danger shadow btn-sm"><i class="ik ik-edit"></i> Edit</a>';
         })
         ->makeHidden([
             'role_id',
@@ -70,19 +70,19 @@ class DataTablesController extends Controller
             if ($var->permissions_count > 0) {
                 return '<span class="badge badge-success">'.$var->permissions_count.' Premissions</span>';
             }
-            return '<span class="badge badge-danger">No Premissions 😢</span>';
+            return '<span class="badge badge-danger shadow">No Premissions 😢</span>';
         })
         ->editColumn('users_count', function ($var) {
             if ($var->users_count > 0) {
-                return '<span class="badge badge-success">'.$var->users_count.' Users</span>';
+                return '<span class="badge badge-success shadow">'.$var->users_count.' Users</span>';
             }
             return '<span class="badge badge-danger">No Users 😢</span>';
         })
         ->addColumn('action', function ($var) {
             return '
-            <a href="'.route("backend.roles.show",$var->id).'" class="btn btn-success btn-sm"> <i class="ik ik-eye"></i> Show</a>
+            <a href="'.route("backend.roles.show",$var->id).'" class="btn btn-success shadow btn-sm"> <i class="ik ik-eye"></i> Show</a>
 
-            <a href="'.route("backend.roles.edit",$var->id).'" class="btn btn-danger btn-sm"><i class="ik ik-edit"></i> Edit</a>';
+            <a href="'.route("backend.roles.edit",$var->id).'" class="btn btn-danger shadow btn-sm"><i class="ik ik-edit"></i> Edit</a>';
         })
         ->makeHidden([
             'created_at',

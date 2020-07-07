@@ -7,6 +7,7 @@ use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class Edit extends Component
@@ -97,5 +98,24 @@ class Edit extends Component
         session()->flash('success', 'User successfully updated.');
 
         return redirect()->to(route('backend.users.index'));
+    }
+
+    public function delete()
+    {
+        $user = User::findOrFail($this->user->id);
+
+        if ($user->id == Auth::id()) {
+            return $this->dispatchBrowserEvent('notify',[
+                'type' => 'Error',
+                'message' =>'You Can\'t Delete Yourself',
+            ]);
+        }else{
+
+            $user->delete();
+
+            session()->flash('success', 'User Deleted successfully.');
+
+            return redirect()->to(route('backend.users.index'));
+        }
     }
 }

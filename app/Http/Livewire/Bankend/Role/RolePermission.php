@@ -18,7 +18,13 @@ class RolePermission extends Component
 
     protected $listeners = ['roleSelectChanged'];
 
-
+    /**
+     * mount
+     *
+     * @return void
+     */
+    public function mount(){}
+    
     /**
      * roleSelectChanged
      *

@@ -42,7 +42,7 @@
                     <textarea name="message" wire:model.lazy="bio" rows="5" class="form-control"></textarea>
                 </div>
 
-                <button class="btn btn-success" type="submit">Create Profile</button>
+                <button class="btn btn-success shadow" type="submit"><i class="ik ik-check-circle"></i> Save</button>
             </div>
         </div>
     </div>

@@ -63,5 +63,16 @@
     document.addEventListener('DOMContentLoaded',function(event) {
         checkbox();
     })
+
+    window.addEventListener('notify',e=>{
+        $.toast({
+            heading: e.detail.type,
+            text: e.detail.message,
+            showHideTransition: 'fade',
+            icon: e.detail.type.toLowerCase(),
+            loaderBg: '#00ffdd',
+            position: 'bottom-left'
+        })
+    })
 </script>
 @endpush
