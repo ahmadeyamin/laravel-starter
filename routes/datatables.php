@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['web','auth']], function () {
     Route::get('users/', 'DataTablesController@users')->name('users');
     Route::get('roles/', 'DataTablesController@roles')->name('roles');
+    Route::get('modules/', 'DataTablesController@modules')->name('modules');
+    Route::get('permissions/', 'DataTablesController@permissions')->name('permissions');
 });

@@ -4,7 +4,7 @@
             <div class="form-horizontal card-body">
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" wire:model.lazy="name" placeholder="Johnathan Doe"
+                    <input type="text" wire:model.lazy="name" placeholder="Ahmad Eyamin"
                         class="form-control @error('name') is-invalid @enderror">
                     @error('name')
                         <div class="invalid-feedback">

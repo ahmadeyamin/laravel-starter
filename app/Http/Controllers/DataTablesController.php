@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Module;
+use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -86,6 +88,85 @@ class DataTablesController extends Controller
         })
         ->makeHidden([
             'created_at',
+            'updated_at',
+            'deletable'
+        ])
+        ->escapeColumns(['action'])
+		->make();
+    }
+
+    /**
+     * modules
+     *
+     * @return void
+     */
+    public function permissions()
+    {
+        $permissions = Permission::with(['module:id,name','roles:name'])
+        ->get();
+
+        return Datatables::of($permissions)
+        ->addColumn('action', function ($var) {
+            return '
+            <a href="'.route("backend.modules.show",$var->id).'" class="btn btn-success shadow btn-sm"> <i class="ik ik-eye"></i> Show</a>
+
+            <a href="'.route("backend.modules.edit",$var->id).'" class="btn btn-danger shadow btn-sm"><i class="ik ik-edit"></i> Edit</a>';
+        })
+        ->addColumn('rolesname', function ($var) {
+            $html = '';
+            foreach ($var->roles as $key => $value) {
+                $html .= '<span class="badge badge-dark ml-1 shadow-sm">'.$value->name.'</span>';
+            }
+
+            return $html;
+        })
+        ->editColumn('created_at', function ($var) {
+            return datetime($var->created_at);
+        })
+        ->editColumn('module.name', function ($var) {
+            return '<span class="badge badge-light shadow-sm">'.$var->module->name.'</span>';
+        })
+        ->editColumn('slug', function ($var) {
+            return '
+            <code>'.$var->slug.'</code>
+            ';
+        })
+        ->makeHidden([
+            'updated_at',
+            'deletable',
+            'roles'
+        ])
+        ->escapeColumns(['action'])
+		->make();
+    }
+
+    /**
+     * modules
+     *
+     * @return void
+     */
+    public function modules()
+    {
+        $modules = Module::withCount(['permissions'])
+        ->get();
+
+        return Datatables::of($modules)
+        ->editColumn('permissions_count', function ($var) {
+            if ($var->permissions_count > 0) {
+                return '<span class="badge badge-success">'.$var->permissions_count.' Premissions</span>';
+            }
+            return '<span class="badge badge-danger shadow">No Premissions 😢</span>';
+        })
+        ->addColumn('action', function ($var) {
+            return '
+            <a href="'.route("backend.modules.show",$var->id).'" class="btn btn-success shadow btn-sm"> <i class="ik ik-eye"></i> Show</a>
+
+            <a href="'.route("backend.modules.edit",$var->id).'" class="btn btn-danger shadow btn-sm"><i class="ik ik-edit"></i> Edit</a>';
+        })
+        ->editColumn('created_at', function ($var) {
+            return datetime($var->created_at);
+        })
+        ->makeHidden([
             'updated_at',
             'deletable'
         ])

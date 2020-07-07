@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome')->name('index');
-
+Route::get('test', function () {
+    dump(Gate::check('app.dashboard'));
+});
 Auth::routes();
 // Socialite routes
 Route::group(['as'=>'login.','prefix'=>'login','namespace'=>'Auth'], function () {
@@ -23,10 +25,23 @@ Route::group(['as'=>'login.','prefix'=>'login','namespace'=>'Auth'], function ()
     Route::get('{provider}/callback', 'LoginController@handleProviderCallback')->name('callback');
 });
 
-
+// All Route For Auth user
 Route::group(['middleware' => ['auth'],'prefix' => 'app','namespace'=>'Backend','as'=>'backend.'], function () {
+
+    //Admin Home Page
     Route::get('home', 'Admin\HomeController@index')->name('home');
-    Route::resource('users', 'Admin\UserController');
-    Route::resource('roles', 'Admin\RoleController');
+
+    //User Controller
+    Route::resource('users', 'Admin\UserController')->only(['index','create','edit','show']);
+
+    //User Roles Controller
+    Route::resource('roles', 'Admin\RoleController')->only(['index','create','edit','show']);
+
+    //Premissions of role
+    Route::resource('permissions', 'Admin\PermissionController');
+
+    // Module is group of permission section of permission
+    Route::resource('modules', 'Admin\moduleController');
+
 });
 
