@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Module;
+use App\Models\Permission;
 
 class ModuleObserver
 {
@@ -14,6 +15,8 @@ class ModuleObserver
      */
     public function created(Module $module)
     {
+
+        Permission::flushCache();
         return Module::flushCache();
     }
 
@@ -25,6 +28,7 @@ class ModuleObserver
      */
     public function updated(Module $module)
     {
+        Permission::flushCache();
         return Module::flushCache();
     }
 
@@ -36,6 +40,8 @@ class ModuleObserver
      */
     public function deleted(Module $module)
     {
+
+        Permission::flushCache();
         return Module::flushCache();
     }
 

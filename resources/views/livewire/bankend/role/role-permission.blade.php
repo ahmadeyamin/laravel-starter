@@ -1,12 +1,13 @@
 <div>
+    <label class="form-check-label d-flex align-content-center align-items-center">
+        <input type="checkbox" wire:model="checkall" class="checkbox">
+        <span class="ml-2">All</span>
+    </label>
     <div wire:loading class="w-100 h-100 py-5 text-center m-auto">
         <i class="ik ik-loader ik-5x"></i>
     </div>
     <br>
-    {{-- <label>
-        <input  type="checkbox" class="checkbox">
-        <span>Select All</span>
-    </label> --}}
+
     <form wire:submit.prevent="save" method="post" >
         <div class="row" wire:loading.remove >
 
@@ -45,7 +46,7 @@
             </div>
             @enderror
 
-            <button  type="submit" class="shadow btn btn-primary @if(!$modules) d-none @endif mx-3" ><i class="ik ik-check-circle"></i> Save</button>
+            <button  type="submit" class="shadow mt-5 btn btn-primary @if(!$modules) d-none @endif mx-3" ><i class="ik ik-check-circle"></i>Save </button>
         </div>
 
     </form>

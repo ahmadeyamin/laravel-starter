@@ -70,7 +70,7 @@ class DataTablesController extends Controller
         return Datatables::of($roles)
         ->editColumn('permissions_count', function ($var) {
             if ($var->permissions_count > 0) {
-                return '<span class="badge badge-success">'.$var->permissions_count.' Premissions</span>';
+                return '<span class="badge badge-success shadow">'.$var->permissions_count.' Premissions</span>';
             }
             return '<span class="badge badge-danger shadow">No Premissions 😢</span>';
         })
@@ -78,7 +78,7 @@ class DataTablesController extends Controller
             if ($var->users_count > 0) {
                 return '<span class="badge badge-success shadow">'.$var->users_count.' Users</span>';
             }
-            return '<span class="badge badge-danger">No Users 😢</span>';
+            return '<span class="badge badge-danger shadow">No Users 😢</span>';
         })
         ->addColumn('action', function ($var) {
             return '
@@ -108,13 +108,13 @@ class DataTablesController extends Controller
         return Datatables::of($permissions)
         ->addColumn('action', function ($var) {
             return '
-            <a href="'.route("backend.modules.show",$var->id).'" class="btn btn-success shadow btn-sm"> <i class="ik ik-eye"></i> Show</a>
+            <a href="'.route("backend.modules.show",$var->id).'" class="btn mb-1 btn-success shadow btn-sm"> <i class="ik ik-eye"></i> Show</a>
             <a onClick="openEditPermission('.$var->id.')" href="javascript:void(0)" class="btn btn-danger shadow btn-sm"><i class="ik ik-edit"></i> Edit</a>';
         })
         ->addColumn('rolesname', function ($var) {
             $html = '';
             foreach ($var->roles as $key => $value) {
-                $html .= '<span class="badge badge-dark ml-1 shadow-sm">'.$value->name.'</span>';
+                $html .= '<span class="badge badge-dark ml-1 mb-1 shadow-sm">'.$value->name.'</span><br>';
             }
 
             return $html;

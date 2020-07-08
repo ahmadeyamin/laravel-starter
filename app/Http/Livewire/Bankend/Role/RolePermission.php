@@ -12,6 +12,7 @@ class RolePermission extends Component
 {
     public $modules = [];
     public $roleId;
+    public $checkall = false;
     public $apppermission = [
 
     ];
@@ -24,7 +25,7 @@ class RolePermission extends Component
      * @return void
      */
     public function mount(){}
-    
+
     /**
      * roleSelectChanged
      *
@@ -43,6 +44,18 @@ class RolePermission extends Component
             $this->apppermission = [];
         }
 
+
+    }
+
+    public function updatedCheckall()
+    {
+        if ($this->checkall) {
+            $this->apppermission = Permission::getAllPermissions()->pluck('id','id')->toArray();
+            $this->checkall = true;
+        } else {
+            $this->apppermission = [];
+            $this->checkall = false;
+        }
 
     }
 
