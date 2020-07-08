@@ -91,7 +91,5 @@ class Edit extends Component
 
         return redirect()->to(route('backend.permissions.index'));
 
-
-        dd($permission);
     }
 }
