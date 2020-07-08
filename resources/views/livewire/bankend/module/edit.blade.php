@@ -29,7 +29,7 @@
 
         </div>
         <div class="modal-footer justify-content-between">
-            <button type="button"  class="btn btn-danger shadow"  onclick="return confirm('Are You Sure. It Will Make User Role Empty') ? @this.call('delete') : false;
+            <button type="button"  class="btn btn-danger shadow"  onclick="return confirm('Are You Sure. It Will Make Delete All Permission Under This Module') ? @this.call('delete') : false;
             ">Delete <i class="ik ik-trash"></i></button>
             <button type="submit" class="btn btn-primary shadow"><i class="ik ik-check-circle"></i> Save</button>
         </div>

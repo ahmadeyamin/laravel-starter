@@ -53,18 +53,11 @@ class Edit extends Component
     public function delete()
     {
         $module = Module::findOrFail($this->module);
+        $module->permissions()->delete();
+        $module->delete();
 
-        if ($module->permissions()->count() > 0) {
-            return $this->dispatchBrowserEvent('notify',[
-                'type' => 'Error',
-                'message' =>'This module Cunnectd With Some Permissions Remove Them First',
-                'reload' => false,
-            ]);
-        }else{
-            $module->delete();
-        }
 
-        session()->flash('success', 'Role module successfully.');
+        session()->flash('success', 'Module successfully.');
 
         return redirect()->to(route('backend.permissions.index'));
     }
