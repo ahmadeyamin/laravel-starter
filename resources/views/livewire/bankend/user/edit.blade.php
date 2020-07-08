@@ -93,10 +93,13 @@
                 <div class="">
                     <div class="form-group">
                         <label for="country">Select Role</label>
-                        <select wire:model.lazy="role" class="form-control @error('role') is-invalid @enderror">
-                            @foreach ($roles as $role)
-                            <option value="{{$role->id}}" @if($user->role_id == $role->id) selected="" @endif >
-                                {{$role->name}}
+                        <select id="role" class="select2 form-control @error('role') is-invalid @enderror">
+                            <option value="">
+                                -- Select Role --
+                            </option>
+                            @foreach ($roles as $roles)
+                            <option value="{{$roles->id}}" @if($role == $roles->id) selected="" @endif >
+                                {{$roles->name}}
                             </option>
                             @endforeach
                         </select>

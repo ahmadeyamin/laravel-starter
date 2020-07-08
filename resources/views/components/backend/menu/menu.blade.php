@@ -9,12 +9,9 @@
         <div class="nav-lavel">Access</div>
 
 
-        <div class="nav-item has-sub @if(request()->routeIs('backend.users*')) open @endif">
-            <a href="javascript:void(0)"><i class="ik ik-user"></i><span>Users</span></a>
-            <div class="submenu-content">
-                <a href="{{ route('backend.users.index') }}" class="menu-item @if(request()->routeIs('backend.users.index')) active @endif">All Users</a>
-                <a href="{{ route('backend.users.create') }}" class="menu-item @if(request()->routeIs('backend.users.create')) active @endif">Add User</a>
-            </div>
+
+        <div class="nav-item @if(request()->routeIs('backend.users*')) active @endif"">
+            <a href="{{ route('backend.users.index') }}"><i class="ik ik-user"></i> All Users</a>
         </div>
 
 
@@ -24,7 +21,7 @@
 
 
         <div class="nav-item @if(request()->routeIs('backend.permissions*')) active @endif">
-            <a href="{{ route('backend.permissions.index') }}" ><i class="ik ik ik-check-square"></i> All Permissions</a>
+            <a href="{{ route('backend.permissions.index') }}" ><i class="ik ik ik-check-square"></i> Permissions</a>
         </div>
         {{-- <div class="nav-item has-sub">
             <a href="#"><i class="ik ik-box"></i><span>Basic</span></a>

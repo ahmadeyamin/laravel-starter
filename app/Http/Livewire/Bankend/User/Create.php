@@ -27,6 +27,16 @@ class Create extends Component
     public $phone;
     public $roles = [];
     public $role;
+    // roleSelectChanged
+
+
+
+    protected $listeners = ['roleSelectChanged'];
+
+    public function roleSelectChanged($id = null)
+    {
+        $this->role = (int) $id;
+    }
 
     public function mount()
     {
@@ -60,6 +70,7 @@ class Create extends Component
 
     public function save()
     {
+        dd($this->role);
         $this->validate([
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email',

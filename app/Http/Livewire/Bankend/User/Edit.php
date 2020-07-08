@@ -31,6 +31,14 @@ class Edit extends Component
 
     public $user;
 
+
+    protected $listeners = ['roleSelectChanged'];
+
+    public function roleSelectChanged($id = null)
+    {
+        $this->role = (int) $id;
+    }
+
     public function mount($user)
     {
         $this->user = $user;

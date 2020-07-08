@@ -3,6 +3,7 @@
 
 @push('css')
 <link rel="stylesheet" href="{{ asset('plugins/mohithg-switchery/dist/switchery.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/select2/dist/css/select2.min.css') }}">
 @livewireStyles
 @endpush
 
@@ -37,6 +38,8 @@
 
 <script src="{{ asset('/plugins/mohithg-switchery/dist/switchery.min.js') }}"></script>
 
+<script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
+
 <script>
     var elemsingle = document.querySelector('#checkbox');
 
@@ -56,12 +59,21 @@
 
         window.livewire.hook('afterDomUpdate', () => {
             checkbox();
-
+            selectChanged()
+            $(".select2").select2();
         });
     });
 
     document.addEventListener('DOMContentLoaded',function(event) {
         checkbox();
+        selectChanged()
+        $(".select2").select2();
     })
+
+    function selectChanged(){
+        $('#role').change(e=>{
+            window.livewire.emit('roleSelectChanged',$("#role").val());
+        })
+    }
 </script>
 @endpush

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use Route;
-use Request;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;

@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Permission;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome')->name('index');
-Route::get('test', function () {
-    dump(Gate::check('app.dashboard'));
-});
+
 Auth::routes();
 // Socialite routes
 Route::group(['as'=>'login.','prefix'=>'login','namespace'=>'Auth'], function () {

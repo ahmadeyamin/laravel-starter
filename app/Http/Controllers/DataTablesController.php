@@ -103,14 +103,14 @@ class DataTablesController extends Controller
     public function permissions()
     {
         $permissions = Permission::with(['module:id,name','roles:name'])
-        ->get();
+        ->latest('id')->get();
 
         return Datatables::of($permissions)
         ->addColumn('action', function ($var) {
             return '
             <a href="'.route("backend.modules.show",$var->id).'" class="btn btn-success shadow btn-sm"> <i class="ik ik-eye"></i> Show</a>
 
-            <a href="'.route("backend.modules.edit",$var->id).'" class="btn btn-danger shadow btn-sm"><i class="ik ik-edit"></i> Edit</a>';
+            <a onClick="openEditPermission('.$var->id.')" href="javascript:void(0)" class="btn btn-danger shadow btn-sm"><i class="ik ik-edit"></i> Edit</a>';
         })
         ->addColumn('rolesname', function ($var) {
             $html = '';

@@ -33,7 +33,7 @@
     </div>
     <div class="card-body">
         <div>
-            <table id="data_table" class="table">
+            <table id="data_table" class="table table-responsive-md" >
                 <thead class="">
                     <tr>
                         <th>ID</th>
