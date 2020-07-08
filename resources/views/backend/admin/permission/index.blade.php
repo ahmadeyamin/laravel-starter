@@ -36,7 +36,7 @@
 <div class="card">
     <div class="card-header justify-content-between">
         <h3>Permissions</h3>
-        <a class="btn btn-success shadow" href="{{ route('backend.modules.create') }}">Add Module <i class="ik ik-plus"></i></a>
+        <a class="btn btn-success shadow" data-toggle="modal" data-target="#moduleModal" href="#">Add Module <i class="ik ik-plus"></i></a>
         <a class="btn btn-theme shadow" data-toggle="modal" data-target="#permissionModal" href="#">Add Permission <i class="ik ik-plus"></i></a>
     </div>
     <div class="card-body">
@@ -62,6 +62,21 @@
     </div>
 </div>
 
+
+<div class="modal fade shadow border-0" id="moduleModal" tabindex="-1" role="dialog" aria-labelledby="moduleModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <livewire:bankend.module.create />
+      </div>
+    </div>
+</div>
+<div class="modal fade shadow border-0" id="editModuleModal" tabindex="-1" role="dialog" aria-labelledby="editModuleModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <livewire:bankend.module.edit />
+      </div>
+    </div>
+</div>
 
 <div class="modal fade shadow border-0" id="permissionModal" tabindex="-1" role="dialog" aria-labelledby="permissionModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -90,7 +105,6 @@
 <script>
 $(document).ready(function() {
     datatab();
-
 })
 
 function datatab() {
@@ -147,7 +161,6 @@ document.addEventListener("livewire:load", function (event) {
         window.livewire.hook('afterDomUpdate', () => {
             $(".select2").select2();
             selectChanged()
-
         });
         window.livewire.hook('beforeDomUpdate', () => {
 
@@ -161,10 +174,10 @@ document.addEventListener("livewire:load", function (event) {
 
 
     function selectChanged(){
-        $('#module').change(e=>{
+        $('#module').change(()=>{
             window.livewire.emit('moduleSelectChanged',$("#module").val());
         })
-        $('#moduleedit').change(e=>{
+        $('#moduleedit').change(()=>{
             window.livewire.emit('moduleEditSelectChanged',$("#moduleedit").val());
         })
     }
@@ -179,7 +192,6 @@ document.addEventListener("livewire:load", function (event) {
             loaderBg: '#00ffdd',
             position: 'bottom-left'
         });
-        console.log(e.detail.reload);
 
         if (e.detail.reload) {
             setInterval(() => {
@@ -193,6 +205,11 @@ document.addEventListener("livewire:load", function (event) {
     function openEditPermission($id) {
         window.livewire.emit('editpermission',$id)
         $('#editpermissionModal').modal();
+    }
+
+    function openEditModule($id) {
+        window.livewire.emit('editmodule',$id)
+        $('#editModuleModal').modal();
     }
 </script>
 @endpush

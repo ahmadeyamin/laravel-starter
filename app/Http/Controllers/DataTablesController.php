@@ -109,7 +109,6 @@ class DataTablesController extends Controller
         ->addColumn('action', function ($var) {
             return '
             <a href="'.route("backend.modules.show",$var->id).'" class="btn btn-success shadow btn-sm"> <i class="ik ik-eye"></i> Show</a>
-
             <a onClick="openEditPermission('.$var->id.')" href="javascript:void(0)" class="btn btn-danger shadow btn-sm"><i class="ik ik-edit"></i> Edit</a>';
         })
         ->addColumn('rolesname', function ($var) {
@@ -121,15 +120,13 @@ class DataTablesController extends Controller
             return $html;
         })
         ->editColumn('created_at', function ($var) {
-            return datetime($var->created_at);
+            return $var->created_at->diffForHumans();
         })
         ->editColumn('module.name', function ($var) {
-            return '<span class="badge badge-light shadow-sm">'.$var->module->name.'</span>';
+            return '<span class="badge badge-light shadow-sm">'.$var->module->name.'</span> <a href="javascript:void(0)" onClick="openEditModule('.$var->module->id.')" class="btn btn-icon btn-outline-success border-0 btn-xs"><i class="ik ik-edit-2 "></i></a>';
         })
         ->editColumn('slug', function ($var) {
-            return '
-            <code>'.$var->slug.'</code>
-            ';
+            return '<code>'.$var->slug.'</code>';
         })
         ->makeHidden([
             'updated_at',
