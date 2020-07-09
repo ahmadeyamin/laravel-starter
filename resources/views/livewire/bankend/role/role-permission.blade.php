@@ -1,8 +1,11 @@
 <div>
-    <label class="form-check-label d-flex align-content-center align-items-center">
-        <input type="checkbox" wire:model="checkall" class="checkbox">
-        <span class="ml-2">All</span>
-    </label>
+    @if ($modules)
+        <label class="form-check-label d-flex align-content-center align-items-center">
+            <input type="checkbox" wire:model="checkall" class="checkbox">
+            <span class="ml-2">All</span>
+        </label>
+    @endif
+
     <div wire:loading class="w-100 h-100 py-5 text-center m-auto">
         <i class="ik ik-loader ik-5x"></i>
     </div>
