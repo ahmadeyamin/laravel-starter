@@ -35,10 +35,13 @@ Route::group(['middleware' => ['auth'],'prefix' => 'app','namespace'=>'Backend',
     Route::resource('roles', 'Admin\RoleController')->only(['index','create','edit','show']);
 
     //Premissions of role
-    Route::resource('permissions', 'Admin\PermissionController');
+    Route::resource('permissions', 'Admin\PermissionController')->only(['index']);
 
     // Module is group of permission section of permission
-    Route::resource('modules', 'Admin\moduleController');
+    // Route::resource('modules', 'Admin\moduleController');
+
+    // Menu Controller
+    Route::resource('menus', 'Admin\MenuController');
 
 });
 

@@ -23,6 +23,13 @@
         <div class="nav-item @if(request()->routeIs('backend.permissions*')) active @endif">
             <a href="{{ route('backend.permissions.index') }}" ><i class="ik ik ik-check-square"></i> Permissions</a>
         </div>
+
+
+        <div class="nav-lavel">System</div>
+
+        <div class="nav-item @if(request()->routeIs('backend.menus*')) active @endif">
+            <a href="{{ route('backend.menus.index') }}" ><i class="ik ik ik-menu"></i> Menus</a>
+        </div>
         {{-- <div class="nav-item has-sub">
             <a href="#"><i class="ik ik-box"></i><span>Basic</span></a>
             <div class="submenu-content">

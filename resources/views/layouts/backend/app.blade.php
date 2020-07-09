@@ -101,7 +101,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 
-                                    <a class="dropdown-item" href="../profile.html"><i class="ik ik-user dropdown-icon"></i> Profile</a>
+                                    <a class="dropdown-item" href="{{ route('backend.users.show',Auth::id()) }}"><i class="ik ik-user dropdown-icon"></i> Profile</a>
 
                                     <a class="dropdown-item" href="#"><i class="ik ik-settings dropdown-icon"></i> Settings</a>
 
@@ -197,7 +197,7 @@
 
         <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}" ></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"  ></script>
-        <script src="{{ asset('plugins/popper.js/dist/umd/popper.min.js') }}" data-turbolinks-eval='false'></script>
+        <script src="{{ asset('plugins/popper.js/dist/umd/popper.min.js') }}"></script>
         <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}" ></script>
         <script src="{{ asset('plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}" ></script>
         <script src="{{ asset('plugins/screenfull/dist/screenfull.js') }}" ></script>
