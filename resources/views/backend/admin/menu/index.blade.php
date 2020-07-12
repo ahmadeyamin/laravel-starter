@@ -61,7 +61,7 @@
                             <td>{{$menu->created_at->diffForHumans()}}</td>
                             <td>
                                 <a href="#" class="btn btn-success shadow btn-sm"> <i class="ik ik-menu"></i> Builder</a>
-                                <a href="javascript:void(0)" class="btn btn-danger shadow btn-sm"><i class="ik ik-edit"></i> Edit</a>
+                                <a href="javascript:void(0)" onclick="openEditMenu({{$menu->id}})" class="btn btn-danger shadow btn-sm"><i class="ik ik-edit"></i> Edit</a>
                             </td>
                         </tr>
                         @endforeach
@@ -76,6 +76,14 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <livewire:bankend.menu.create />
+      </div>
+    </div>
+</div>
+
+<div class="modal fade shadow border-0" id="editMenuModal" tabindex="-1" role="dialog" aria-labelledby="editMenuModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <livewire:bankend.menu.edit />
       </div>
     </div>
 </div>
@@ -109,22 +117,28 @@ function datatab() {
 }
 
 window.addEventListener('notify',e=>{
-        $.toast({
-            heading: e.detail.type,
-            text: e.detail.message,
-            showHideTransition: 'fade',
-            icon: e.detail.type.toLowerCase(),
-            loaderBg: '#00ffdd',
-            position: 'bottom-left'
-        });
+    $.toast({
+        heading: e.detail.type,
+        text: e.detail.message,
+        showHideTransition: 'fade',
+        icon: e.detail.type.toLowerCase(),
+        loaderBg: '#00ffdd',
+        position: 'bottom-left'
+    });
 
-        if (e.detail.reload) {
-            setInterval(() => {
-                window.location.reload();
-            }, 1000);
-        }
+    if (e.detail.reload) {
+        setInterval(() => {
+            window.location.reload();
+        }, 1000);
+    }
 
-    })
+})
+
+
+function openEditMenu($id) {
+    window.livewire.emit('editMenu',$id)
+    $('#editMenuModal').modal();
+}
 
 </script>
 @endpush

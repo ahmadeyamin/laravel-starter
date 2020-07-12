@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Module;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,12 +30,13 @@ class AppServiceProvider extends ServiceProvider
     {
         // Blade::withoutDoubleEncoding();
 
-        Blade::directive('datetime', function ($expression) {
-            return "<?php echo ($expression)->format('m/d/Y h:iA'); ?>";
+        Blade::directive('datetime', function ($date) {
+            return "<?php echo ($date)->format('m/d/Y h:iA'); ?>";
         });
 
         Module::observe(\App\Observers\ModuleObserver::class);
         Permission::observe(\App\Observers\PermissionObserver::class);
         Role::observe(\App\Observers\RoleObserver::class);
+        Setting::observe(\App\Observers\SettingObserver::class);
     }
 }
