@@ -60,7 +60,7 @@
 
                             <td>{{$menu->created_at->diffForHumans()}}</td>
                             <td>
-                                <a href="#" class="btn btn-success shadow btn-sm"> <i class="ik ik-menu"></i> Builder</a>
+                                <a href="{{ route('backend.menus.builder',$menu->id) }}" class="btn btn-success shadow btn-sm"> <i class="ik ik-menu"></i> Builder</a>
                                 <a href="javascript:void(0)" onclick="openEditMenu({{$menu->id}})" class="btn btn-danger shadow btn-sm"><i class="ik ik-edit"></i> Edit</a>
                             </td>
                         </tr>

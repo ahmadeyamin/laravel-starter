@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'app','namespace'=>'Backend',
 
     // Menu Controller
     Route::resource('menus', 'Admin\MenuController');
+    Route::get('menus/{menu}/builder', 'Admin\MenuController@builder')->name('menus.builder');
 
 });
 

@@ -19,6 +19,16 @@ class MenuController extends Controller
         return view('backend.admin.menu.index',compact(['menus']));
     }
 
+    public function builder(Request $r)
+    {
+        return $menu = Menu::with(['items'=>function($query){
+            $query->with(['childs'=>function($query){
+                $query->with(['childs']);
+            }])->whereNull('parent_id');
+        }])->findOrfail($r->menu);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
