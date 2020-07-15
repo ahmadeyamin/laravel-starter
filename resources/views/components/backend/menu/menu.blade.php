@@ -4,7 +4,9 @@
         <div class="nav-item @if(request()->routeIs('backend.home'))  active @endif">
             <a href="{{ route('backend.home') }}"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
         </div>
-
+        <div class="nav-item @if(request()->routeIs('backend.pages.*'))  active @endif">
+            <a href="{{ route('backend.pages.index') }}"><i class="ik ik-package"></i><span>Pages</span></a>
+        </div>
 
         <div class="nav-lavel">Access</div>
 
@@ -29,6 +31,18 @@
 
         <div class="nav-item @if(request()->routeIs('backend.menus*')) active @endif">
             <a href="{{ route('backend.menus.index') }}" ><i class="ik ik ik-menu"></i> Menus</a>
+        </div>
+
+        <div class="nav-item @if(request()->routeIs('backend.backups*')) active @endif">
+            <a href="{{ route('backend.backups.index') }}" ><i class="ik ik ik-database"></i> Backup</a>
+        </div>
+
+        <div class="nav-item @if(request()->routeIs('backend.settings*')) active @endif">
+            <a href="{{ route('backend.settings.index') }}" ><i class="ik ik ik-settings"></i> Settings</a>
+        </div>
+
+        <div class="nav-item @if(request()->routeIs('backend.settings*')) active @endif">
+            <a href="{{ route('backend.settings.index') }}" ><i class="ik ik ik-trending-up"></i> Tools</a>
         </div>
         {{-- <div class="nav-item has-sub">
             <a href="#"><i class="ik ik-box"></i><span>Basic</span></a>

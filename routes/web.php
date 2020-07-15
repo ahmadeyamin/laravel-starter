@@ -42,11 +42,22 @@ Route::group(['middleware' => ['auth'],'prefix' => 'app','namespace'=>'Backend',
     Route::resource('permissions', 'Admin\PermissionController')->only(['index']);
 
     // Module is group of permission section of permission
-    // Route::resource('modules', 'Admin\moduleController');
+    Route::resource('pages', 'Admin\PageController');
 
     // Menu Controller
-    Route::resource('menus', 'Admin\MenuController');
+    Route::resource('menus', 'Admin\MenuController')->only(['index']);
     Route::get('menus/{menu}/builder', 'Admin\MenuController@builder')->name('menus.builder');
+
+    //Backups Route
+    Route::get('backups', 'Admin\BackupController@index')->name('backups.index');
+    Route::get('backups/create', 'Admin\BackupController@create')->name('backups.create');
+    Route::get('backups/download', 'Admin\BackupController@download')->name('backups.download');
+    Route::get('backups/delete', 'Admin\BackupController@delete')->name('backups.delete');
+
+    //Settings Route
+    Route::get('settings', 'Admin\SettingController@index')->name('settings.index');
+    Route::post('settings', 'Admin\SettingController@update')->name('settings.update');
+
 
 });
 

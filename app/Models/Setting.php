@@ -39,12 +39,9 @@ class Setting extends Model
         $setting = self::getAllSettings()->where('key',$key)->first();
 
         if (!$setting) {
-            return [
-                'key' => $key,
-                'value' => $default,
-            ];
+            return $default;
         }
-        return $setting;
+        return $setting->value;
     }
 
     public static function has($key)
