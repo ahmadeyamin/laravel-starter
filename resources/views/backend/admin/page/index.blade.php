@@ -31,7 +31,7 @@
 <div class="card">
     <div class="card-header justify-content-between">
         <h3>Pages</h3>
-        <a class="btn btn-theme shadow" data-toggle="modal" data-target="#menuModal" href="#">Add Page <i class="ik ik-plus"></i></a>
+        <a class="btn btn-theme shadow" href="{{ route('backend.pages.create') }}">Add Page <i class="ik ik-plus"></i></a>
     </div>
     <div class="card-body">
         <div>

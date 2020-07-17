@@ -36,21 +36,21 @@
 <div class="card">
     <div class="container card-body">
         <ul class="nav  nav-pills mb-4" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                    aria-selected="true">Basic</a>
+            <li class="nav-item ">
+                <a class="nav-link @if(request()->has('basic')) active @endif" id="home-tab" data-toggle="tab"
+                    href="#home" role="tab" aria-controls="home" aria-selected="true">Basic</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link @if(request()->has('env')) active @endif" id="profile-tab" data-toggle="tab"
+                    href="#profile" role="tab" aria-controls="profile" aria-selected="false">ENV</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                    aria-controls="profile" aria-selected="false">ENV</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                    aria-controls="contact" aria-selected="false">Integration</a>
+                <a class="nav-link @if(request()->has('integration')) active @endif" id="contact-tab" data-toggle="tab"
+                    href="#contact" role="tab" aria-controls="contact" aria-selected="false">Integration</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="tab-pane fade @if(request()->has('basic')) active show @endif active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <form
                     action="{{ route('backend.settings.update',['action'=>'basic']) }}"
                     method="post" enctype="multipart/form-data">
@@ -113,7 +113,7 @@
                         Save</button>
                 </form>
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="tab-pane fade @if(request()->has('env')) active show @endif" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <form
                     action="{{ route('backend.settings.update',['action'=>'env']) }}"
                     method="post">
@@ -137,7 +137,8 @@
                                     value="{{ setting('email_port','587') }}"
                                     class="form-control" name="email_port" id="email_port" aria-describedby="email_port"
                                     placeholder="email Server port">
-                                <small id="email_port" class="form-text text-muted">Website email Server Port is here</small>
+                                <small id="email_port" class="form-text text-muted">Website email Server Port is
+                                    here</small>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-12">
@@ -145,9 +146,10 @@
                                 <label for="email_mailer">Mailer Mail</label>
                                 <input type="text"
                                     value="{{ setting('email_mailer','admin@admin.com') }}"
-                                    class="form-control" name="email_mailer" id="email_mailer" aria-describedby="email_mailer"
-                                    placeholder="Website email_mailer">
-                                <small id="email_mailer" class="form-text text-muted">Website Email Mailer is here</small>
+                                    class="form-control" name="email_mailer" id="email_mailer"
+                                    aria-describedby="email_mailer" placeholder="Website email_mailer">
+                                <small id="email_mailer" class="form-text text-muted">Website Email Mailer is
+                                    here</small>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
@@ -155,20 +157,20 @@
                                 <label for="mail_username">Mail Server Username</label>
                                 <input type="text"
                                     value="{{ setting('mail_username','admin@admin.com') }}"
-                                    class="form-control" name="mail_username" id="mail_username" aria-describedby="mail_username"
-                                    placeholder="Website mail_username">
-                                <small id="mail_username" class="form-text text-muted">Website Email Username is here</small>
+                                    class="form-control" name="mail_username" id="mail_username"
+                                    aria-describedby="mail_username" placeholder="Website mail_username">
+                                <small id="mail_username" class="form-text text-muted">Website Email Username is
+                                    here</small>
                             </div>
                         </div>
 
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
                                 <label for="mail_password">Mail Server Password</label>
-                                <input type="password"
-                                    value="***********"
-                                    class="form-control" name="mail_password" id="mail_password" aria-describedby="mail_password"
-                                    placeholder="">
-                                <small id="mail_password" class="form-text text-muted">Website Email Password is here</small>
+                                <input type="password" value="***********" class="form-control" name="mail_password"
+                                    id="mail_password" aria-describedby="mail_password" placeholder="">
+                                <small id="mail_password" class="form-text text-muted">Website Email Password is
+                                    here</small>
                             </div>
                         </div>
 
@@ -177,9 +179,10 @@
                                 <label for="mail_encryption">Mail Server Encryption</label>
                                 <input type="text"
                                     value="{{ setting('mail_encryption','SSL') }}"
-                                    class="form-control" name="mail_encryption" id="mail_encryption" aria-describedby="mail_encryption"
-                                    placeholder="Website mail_encryption">
-                                <small id="mail_encryption" class="form-text text-muted">Website Email Server Encryption</small>
+                                    class="form-control" name="mail_encryption" id="mail_encryption"
+                                    aria-describedby="mail_encryption" placeholder="Website mail_encryption">
+                                <small id="mail_encryption" class="form-text text-muted">Website Email Server
+                                    Encryption</small>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
@@ -187,8 +190,8 @@
                                 <label for="mail_from_name">Mail From Name</label>
                                 <input type="text"
                                     value="{{ setting('mail_from_name','Admin') }}"
-                                    class="form-control" name="mail_from_name" id="mail_from_name" aria-describedby="mail_from_name"
-                                    placeholder="Website mail_from_name">
+                                    class="form-control" name="mail_from_name" id="mail_from_name"
+                                    aria-describedby="mail_from_name" placeholder="Website mail_from_name">
                                 <small id="mail_from_name" class="form-text text-muted">Website Mail From Name</small>
                             </div>
                         </div>
@@ -197,8 +200,8 @@
                                 <label for="mail_from_address">Mail Frem</label>
                                 <input type="text"
                                     value="{{ setting('mail_from_address','admin@admin.com') }}"
-                                    class="form-control" name="mail_from_address" id="mail_from_address" aria-describedby="mail_from_address"
-                                    placeholder="Website mail_from_address">
+                                    class="form-control" name="mail_from_address" id="mail_from_address"
+                                    aria-describedby="mail_from_address" placeholder="Website mail_from_address">
                                 <small id="mail_from_address" class="form-text text-muted">Website Email SFrom</small>
                             </div>
                         </div>
@@ -208,10 +211,91 @@
                         Save</button>
                 </form>
             </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat cumque adipisci autem illo sit ratione
-                error? Eum labore magnam, sapiente repellendus a ipsum blanditiis laboriosam eveniet sit sed molestias
-                consectetur. 3
+            <div class="tab-pane fade @if(request()->has('integration')) active show @endif" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <form
+                    action="{{ route('backend.settings.update',['action'=>'integration']) }}"
+                    method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="facebook_client_id">Facebook Client ID</label>
+                                <input type="text"
+                                    value="{{ setting('facebook_client_id','123') }}"
+                                    class="form-control" name="facebook_client_id" id="facebook_client_id"
+                                    aria-describedby="facebook_client_id" placeholder="facebook client id">
+                                <small id="facebook_client_id" class="form-text text-muted">Website Social login
+                                    facebook Client ID</small>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="facebook_client_secret">Facebook Client Secret</label>
+                                <input type="password"
+                                    value=""
+                                    class="form-control" name="facebook_client_secret" id="facebook_client_secret"
+                                    aria-describedby="facebook_client_secret" placeholder="Facebook client secret">
+                                <small id="facebook_client_secret" class="form-text text-muted">Website Social login
+                                    facebook Client Secret</small>
+                            </div>
+                        </div>
+
+                        <div class="border-bottom col-12 mb-5"></div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="twitter_client_id">Twitter Client ID</label>
+                                <input type="text"
+                                    value="{{ setting('twitter_client_id','123') }}"
+                                    class="form-control" name="twitter_client_id" id="twitter_client_id"
+                                    aria-describedby="twitter_client_id" placeholder="twitter client id">
+                                <small id="twitter_client_id" class="form-text text-muted">Website Social login
+                                    twitter Client ID</small>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="twitter_client_secret">Twitter Client Secret</label>
+                                <input type="password"
+                                    value=""
+                                    class="form-control" name="twitter_client_secret" id="twitter_client_secret"
+                                    aria-describedby="twitter_client_secret" placeholder="twitter client secret">
+                                <small id="twitter_client_secret" class="form-text text-muted">Website Social login
+                                    twitter Client Secret</small>
+                            </div>
+                        </div>
+
+                        <div class="border-bottom col-12 mb-5"></div>
+
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="github_client_id">github Client ID</label>
+                                <input type="text"
+                                    value="{{ setting('github_client_id','123') }}"
+                                    class="form-control" name="github_client_id" id="github_client_id"
+                                    aria-describedby="github_client_id" placeholder="github client id">
+                                <small id="github_client_id" class="form-text text-muted">Website Social login
+                                    github Client ID</small>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="github_client_secret">github Client Secret</label>
+                                <input type="password"
+                                    value=""
+                                    class="form-control" name="github_client_secret" id="github_client_secret"
+                                    aria-describedby="github_client_secret" placeholder="github client secret">
+                                <small id="github_client_secret" class="form-text text-muted">Website Social login
+                                    github Client Secret</small>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success shadow" type="submit"><i class="ik ik-check-circle"></i>
+                        Save</button>
+                </form>
             </div>
         </div>
     </div>
