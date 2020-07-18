@@ -3,7 +3,7 @@
 @if(session()->has('success'))
 $.toast({
     heading: 'Success',
-    text: '{{ session('success') }}',
+    text: '{{ ucfirst(session('success')) }}',
     showHideTransition: 'fade',
     icon: 'success',
     loaderBg: '#00ffdd',
@@ -17,9 +17,9 @@ $.toast({
 @foreach ($errors->all() as $error)
     $.toast({
         heading: 'Error',
-        text: '{{ $error }}',
+        text: '{{ ucfirst($error) }}',
         showHideTransition: 'fade',
-        icon: 'Error',
+        icon: 'error',
         loaderBg: '#00ffdd',
         position: 'bottom-left'
     })

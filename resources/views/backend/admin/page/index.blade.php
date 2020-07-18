@@ -22,7 +22,11 @@
 @push('css')
 
 <link rel="stylesheet" href="{{ asset('plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-
+<style>
+    img{
+        width: 100%;
+    }
+</style>
 @endpush
 
 
@@ -41,7 +45,6 @@
                         <th>ID</th>
                         <th>Image</th>
                         <th>Title</th>
-                        <th>Slug</th>
                         <th>Body</th>
                         <th>Status</th>
                         <th>Created</th>
@@ -52,10 +55,13 @@
                         @foreach ($pages as $page)
                         <tr>
                             <td>{{$page->id}}</td>
-                            <td>{{$page->image}}</td>
-                            <td>{{$page->title}}</td>
-                            <td>{{$page->slug}}</td>
                             <td>
+                                <div style="width: 100px">
+                                    {{$page->getFirstMedia('images')}}
+                                </div>
+                            </td>
+                            <td style="width:10rem">{{$page->title}}</td>
+                            <td style="width:10rem">
                                {{$page->short_body}}
                             </td>
 
