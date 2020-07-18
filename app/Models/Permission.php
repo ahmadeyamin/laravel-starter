@@ -5,6 +5,29 @@ namespace App\Models;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Permission
+ *
+ * @property int $id
+ * @property int $module_id
+ * @property string $name
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Module $module
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
+ * @property-read int|null $roles_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission whereModuleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Permission extends Model
 {
      /**
