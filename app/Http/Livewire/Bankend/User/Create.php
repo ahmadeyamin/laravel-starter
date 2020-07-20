@@ -70,7 +70,7 @@ class Create extends Component
 
     public function save()
     {
-        dd($this->role);
+        // dd($this->role);
         $this->validate([
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email',
