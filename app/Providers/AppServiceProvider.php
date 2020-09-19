@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('datetime', function ($date) {
             return "<?php echo ($date)->format('m/d/Y h:iA'); ?>";
         });
+
+        Paginator::useBootstrap();
 
         Module::observe(\App\Observers\ModuleObserver::class);
         Permission::observe(\App\Observers\PermissionObserver::class);

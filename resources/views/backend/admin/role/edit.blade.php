@@ -67,13 +67,13 @@
     }
 
     document.addEventListener("livewire:load", function (event) {
-        window.livewire.hook('afterDomUpdate', () => {
+        window.livewire.hook('message.processed', () => {
             checkbox();
             selectChanged();
             $(".select2").select2();
 
         });
-        window.livewire.hook('beforeDomUpdate', () => {
+        window.livewire.hook('message.received', () => {
             $('.switchery').hide();
         });
     });

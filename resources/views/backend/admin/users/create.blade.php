@@ -52,12 +52,12 @@
     }
 
     document.addEventListener("livewire:load", function(event) {
-        window.livewire.hook('beforeDomUpdate', () => {
+        window.livewire.hook('message.received', () => {
             // checkbox();
 
         });
 
-        window.livewire.hook('afterDomUpdate', () => {
+        window.livewire.hook('message.processed', () => {
             checkbox();
             selectChanged()
             $(".select2").select2();

@@ -47,7 +47,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'Page Not Created';
     }
 
     /**

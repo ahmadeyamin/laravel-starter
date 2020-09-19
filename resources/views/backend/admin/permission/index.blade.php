@@ -158,11 +158,11 @@ function datatab() {
 
 
 document.addEventListener("livewire:load", function (event) {
-        window.livewire.hook('afterDomUpdate', () => {
+        window.livewire.hook('message.processed', () => {
             $(".select2").select2();
             selectChanged()
         });
-        window.livewire.hook('beforeDomUpdate', () => {
+        window.livewire.hook('message.received', () => {
 
         });
     });
