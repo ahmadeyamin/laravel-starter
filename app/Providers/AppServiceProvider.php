@@ -31,6 +31,12 @@ class AppServiceProvider extends ServiceProvider
     {
         // Blade::withoutDoubleEncoding();
 
+
+        if(env('REDIRECT_HTTPS'))
+        {
+            \URL::forceScheme('https');
+        }
+
         Blade::directive('datetime', function ($date) {
             return "<?php echo ($date)->format('m/d/Y h:iA'); ?>";
         });
