@@ -92,10 +92,16 @@ class Create extends Component
         ]);
 
         if ($this->avatar) {
-            $user
-            ->addMedia($this->avatar->getRealPath())
-            ->preservingOriginal()
-            ->toMediaCollection('avatar');
+
+            $path = $this->avatar->store('profile-photos','public');
+
+            $user->update([
+                'profile_photo_path' =>  $path,
+            ]);
+            // $user
+            // ->addMedia($this->avatar->getRealPath())
+            // ->preservingOriginal()
+            // ->toMediaCollection('avatar');
         }
 
         session()->flash('success', 'Post successfully updated.');

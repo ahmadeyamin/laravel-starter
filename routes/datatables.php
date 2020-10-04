@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DataTablesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => ['web','auth']], function () {
-    Route::get('users/', 'DataTablesController@users')->name('users');
-    Route::get('roles/', 'DataTablesController@roles')->name('roles');
-    // Route::get('modules/', 'DataTablesController@modules')->name('modules');
-    Route::get('permissions/', 'DataTablesController@permissions')->name('permissions');
+Route::group(['middleware' => ['web']], function () {
+    Route::get('users/', [DataTablesController::class,'users'])->name('users');
+    Route::get('roles/', [DataTablesController::class,'roles'])->name('roles');
+    // Route::get('modules/', [DataTablesController::class,'modules'])->name('modules');
+    Route::get('permissions/', [DataTablesController::class,'permissions'])->name('permissions');
 });

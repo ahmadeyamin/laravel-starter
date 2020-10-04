@@ -18,7 +18,7 @@ class DataTablesController extends Controller
      */
     public function users()
     {
-        $users = User::with(['role','media'])
+        $users = User::with(['role'])
         ->get();
 
         return Datatables::of($users)
