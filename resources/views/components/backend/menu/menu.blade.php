@@ -41,8 +41,8 @@
             <a href="{{ route('backend.settings.index') }}?basic" ><i class="ik ik ik-settings"></i> Settings</a>
         </div>
 
-        <div class="nav-item @if(request()->routeIs('backend.settings*')) active @endif">
-            <a href="{{ route('backend.settings.index') }}?basic" ><i class="ik ik ik-trending-up"></i> Tools</a>
+        <div class="nav-item">
+            <a href="#" disabled ><i class="ik ik ik-trending-up"></i> Tools</a>
         </div>
         {{-- <div class="nav-item has-sub">
             <a href="#"><i class="ik ik-box"></i><span>Basic</span></a>

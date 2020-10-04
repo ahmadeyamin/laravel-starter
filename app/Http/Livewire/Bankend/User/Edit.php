@@ -96,11 +96,24 @@ class Edit extends Component
             'role_id' => $this->role,
         ]);
 
+        // if ($this->avatarNew) {
+        //     $user
+        //     ->addMedia($this->avatarNew->getRealPath())
+        //     ->preservingOriginal()
+        //     ->toMediaCollection('avatar');
+        // }
+
         if ($this->avatarNew) {
-            $user
-            ->addMedia($this->avatarNew->getRealPath())
-            ->preservingOriginal()
-            ->toMediaCollection('avatar');
+            
+            $path = $this->avatarNew->store('profile-photos','public');
+
+            $user->update([
+                'profile_photo_path' =>  $path,
+            ]);
+            // $user
+            // ->addMedia($this->avatar->getRealPath())
+            // ->preservingOriginal()
+            // ->toMediaCollection('avatar');
         }
 
         session()->flash('success', 'User successfully updated.');
