@@ -134,6 +134,6 @@ class LoginController extends Controller
             }
             Auth::login($newUser);
         }
-        return redirect($this->redirectPath())->with('success','You have successfully logged in with '.ucfirst($provider).'!');
+        return redirect($this->redirectTo)->with('success','You have successfully logged in with '.ucfirst($provider).'!');
     }
 }
